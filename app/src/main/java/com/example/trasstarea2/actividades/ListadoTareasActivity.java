@@ -32,7 +32,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.trasstarea2.R;
 import com.example.trasstarea2.adaptadores.Adaptador;
 import com.example.trasstarea2.datos.Tarea;
-import com.example.trasstarea2.fragmentos.Datos_Segundo_Fragmento;
 import com.example.trasstarea2.viewModel.TareaViewModel;
 
 import java.util.ArrayList;

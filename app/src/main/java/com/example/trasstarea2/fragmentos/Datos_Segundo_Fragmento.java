@@ -2,11 +2,9 @@ package com.example.trasstarea2.fragmentos;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -20,14 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.trasstarea2.R;
-import com.example.trasstarea2.actividades.CrearTareas;
-import com.example.trasstarea2.actividades.ListadoTareasActivity;
-import com.example.trasstarea2.adaptadores.Adaptador;
-import com.example.trasstarea2.datos.Tarea;
 import com.example.trasstarea2.viewModel.TareaViewModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Datos_Segundo_Fragmento extends Fragment {
@@ -172,7 +163,6 @@ public class Datos_Segundo_Fragmento extends Fragment {
 
 
     public void volver(View view){
-
 
         requireActivity().getSupportFragmentManager().popBackStack();
 

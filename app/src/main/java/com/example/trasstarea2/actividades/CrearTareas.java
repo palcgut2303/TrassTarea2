@@ -1,14 +1,10 @@
 package com.example.trasstarea2.actividades;
 
-import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.trasstarea2.R;
@@ -16,9 +12,6 @@ import com.example.trasstarea2.datos.Tarea;
 import com.example.trasstarea2.fragmentos.Datos_Primer_Fragmento;
 import com.example.trasstarea2.fragmentos.Datos_Segundo_Fragmento;
 import com.example.trasstarea2.viewModel.TareaViewModel;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 public class CrearTareas extends AppCompatActivity implements Datos_Segundo_Fragmento.ComunicacionCrearTarea {
 
