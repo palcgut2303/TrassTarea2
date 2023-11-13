@@ -10,7 +10,7 @@ android {
         applicationId = "com.example.trasstarea2"
         minSdk = 24
         //noinspection EditedTargetSdkVersion
-        targetSdk = 34
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 

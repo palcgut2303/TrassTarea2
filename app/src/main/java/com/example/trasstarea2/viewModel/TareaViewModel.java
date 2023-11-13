@@ -16,8 +16,7 @@ public class TareaViewModel extends ViewModel {
     private MutableLiveData<String> tituloTarea,fechaCreacion,fechaObjetivo,descripcion;
     private MutableLiveData<String> progreso;
     private MutableLiveData<Boolean> prioritaria;
-
-        private MutableLiveData<Integer> id;
+    private MutableLiveData<Integer> id;
 
 
     public MutableLiveData<String> getTituloTarea() {
@@ -34,8 +33,8 @@ public class TareaViewModel extends ViewModel {
         return descripcion;
     }
 
-    public void setDescripcion(MutableLiveData<String> descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcion(String descripcion) {
+       this.descripcion.setValue(descripcion);
     }
 
     public MutableLiveData<Integer> getId(){

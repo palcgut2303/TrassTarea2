@@ -161,30 +161,10 @@ public class Datos_Segundo_Fragmento extends Fragment {
 
     private void guardar(View view) {
 
-        /*nombreTarea = compartirViewModel.getTituloTarea().getValue();
-        fechaCreacion = compartirViewModel.getFechaCreacion().getValue();
-        fechaObjetivo = compartirViewModel.getFechaObjetivo().getValue();
-        progresoSp = compartirViewModel.getProgreso().getValue();
-        esPrioritaria = Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue());
-        descripcion = tv_descripcion.getText().toString();
 
-        int numProgreso = numProgreso(progresoSp);
-
-
-        Tarea miTarea = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-           if(esPrioritaria){
-               miTarea = new Tarea(nombreTarea,descripcion,numProgreso,esPrioritaria,fechaCreacion,fechaObjetivo,R.drawable.baseline_star_24);
-           }else{
-               miTarea = new Tarea(nombreTarea,descripcion,numProgreso,esPrioritaria,fechaCreacion,fechaObjetivo,R.drawable.baseline_star_border_24);
-           }
-
-
-        }*/
-
-
+        compartirViewModel.setDescripcion(tv_descripcion.getText().toString());
         comunicador2.onBotonAgregarTarea();
-        //comunicador2.onBotonAgregarTarea(miTarea);
+
 
         getActivity().finish();
     }
@@ -192,6 +172,8 @@ public class Datos_Segundo_Fragmento extends Fragment {
 
 
     public void volver(View view){
+
+
         requireActivity().getSupportFragmentManager().popBackStack();
 
         View fragmentContainer1 = requireActivity().findViewById(R.id.primer_fragment);

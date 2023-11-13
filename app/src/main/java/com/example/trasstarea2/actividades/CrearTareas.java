@@ -18,6 +18,7 @@ import com.example.trasstarea2.fragmentos.Datos_Segundo_Fragmento;
 import com.example.trasstarea2.viewModel.TareaViewModel;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class CrearTareas extends AppCompatActivity implements Datos_Segundo_Fragmento.ComunicacionCrearTarea {
 
@@ -68,13 +69,15 @@ public class CrearTareas extends AppCompatActivity implements Datos_Segundo_Frag
 
         int numProgreso = numProgreso(progresoSp);
 
+        int idRandom = (int) (Math.random() * ((100 - 1) + 1)) + 1;
+
 
         Tarea miTarea = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             if(esPrioritaria){
-                miTarea = new Tarea(contadorId++,nombreTarea,descripcion,numProgreso,esPrioritaria,fechaCreacion,fechaObjetivo,R.drawable.baseline_star_24);
+                miTarea = new Tarea(idRandom,nombreTarea,descripcion,numProgreso,esPrioritaria,fechaCreacion,fechaObjetivo,R.drawable.baseline_star_24);
             }else{
-                miTarea = new Tarea(contadorId++,nombreTarea,descripcion,numProgreso,esPrioritaria,fechaCreacion,fechaObjetivo,R.drawable.baseline_star_border_24);
+                miTarea = new Tarea(idRandom,nombreTarea,descripcion,numProgreso,esPrioritaria,fechaCreacion,fechaObjetivo,R.drawable.baseline_star_border_24);
             }
 
             Intent intentVolver = new Intent();

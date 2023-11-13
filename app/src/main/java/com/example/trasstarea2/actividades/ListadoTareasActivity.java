@@ -19,6 +19,7 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -58,11 +59,11 @@ public class ListadoTareasActivity extends AppCompatActivity{
     }
 
     public TareaViewModel tareaViewModel;
-    private ArrayList<Tarea> listaTareasPrio = new ArrayList<>();
+    private ArrayList<Tarea> listaTareasPrio;
 
     private RecyclerView recyclerTareas;
 
-    private Boolean esPriori = false;
+    public Boolean esPriori = false;
 
     private Adaptador adapter;
 
@@ -90,7 +91,12 @@ public class ListadoTareasActivity extends AppCompatActivity{
             }
 
             recyclerTareas=findViewById(R.id.rcView_Tareas);
-            adapter = new Adaptador(this, listaTareas);
+            if(esPriori){
+                adapter = new Adaptador(this, listaTareasPrio);
+            }else{
+                adapter = new Adaptador(this, listaTareas);
+            }
+
 
             recyclerTareas.setAdapter(adapter);
             recyclerTareas.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
@@ -133,11 +139,11 @@ public class ListadoTareasActivity extends AppCompatActivity{
             esPriori = !esPriori;
 
             if(esPriori){
-                Adaptador adapter = new Adaptador(this, listaTareasPrio);
+                 adapter = new Adaptador(this, listaTareasPrio);
                 recyclerTareas.setAdapter(adapter);
                 item.setIcon(R.drawable.baseline_star_border_24);
             }else{
-                Adaptador adapter = new Adaptador(this, listaTareas);
+                 adapter = new Adaptador(this, listaTareas);
                 recyclerTareas.setAdapter(adapter);
                 item.setIcon(R.drawable.baseline_star_24);
             }
@@ -149,22 +155,35 @@ public class ListadoTareasActivity extends AppCompatActivity{
             Toast.makeText(this, "Mostar Prioritarias ", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.it_añadirTarea) {
             Intent intentCrearTarea = new Intent(this, CrearTareas.class);
-            ActivityResultLauncher<Intent> lanzador = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult o) {
-                    if (o.getResultCode() == Activity.RESULT_OK) {
-                        //No hay códigos de actividad
-                        Intent intentDevuelto = o.getData();
-                        Tarea tareaDevuelta = (Tarea) intentDevuelto.getExtras().get("TareaDevuelta");
-                        listaTareas.add(tareaDevuelta);
-                    }
-                }
 
-            }) ;
+            lanzador.launch(intentCrearTarea);
         }
         return super.onOptionsItemSelected(item);
     }
 
+    ActivityResultContract<Intent, ActivityResult> contrato = new ActivityResultContracts.StartActivityForResult();
+    ActivityResultCallback<ActivityResult> respuesta = new ActivityResultCallback<ActivityResult>(){
+        @Override
+        public void onActivityResult(ActivityResult o) {
+            if (o.getResultCode() == Activity.RESULT_OK) {
+                //No hay códigos de actividad
+                Intent intentDevuelto = o.getData();
+                Tarea tareaDevuelta = (Tarea) intentDevuelto.getExtras().get("TareaDevuelta");
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    if(tareaDevuelta.isPrioritaria()){
+                        listaTareasPrio.add(tareaDevuelta);
+                        listaTareas.add(tareaDevuelta);
+                    }else{
+                        listaTareas.add(tareaDevuelta);
+                    }
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+        }
+    };
+
+    ActivityResultLauncher<Intent> lanzador = registerForActivityResult(contrato,respuesta);
 
 
     @Override
@@ -172,34 +191,68 @@ public class ListadoTareasActivity extends AppCompatActivity{
         int itemId = item.getItemId();
         boolean b = true;
 
-        Tarea tareSeleccionada = adapter.getTareaSeleccionada();
-        int posicion = listaTareas.indexOf(tareSeleccionada);
 
-        if(itemId == R.id.it_descripcion){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                mostrarDescripcion(listaTareas.get(posicion).getDescripcion());
-            }
-            Toast.makeText(this, "Descripción", Toast.LENGTH_SHORT).show();
 
-            return true;
-        } else if (itemId == R.id.it_editar) {
-            Toast.makeText(this, "Editar", Toast.LENGTH_SHORT).show();
-            return true;
-        }else {
+        if(!esPriori){
+            Tarea tareSeleccionada = adapter.getTareaSeleccionada();
+            int posicion = listaTareas.indexOf(tareSeleccionada);
 
-            Tarea miTareaBorrar = listaTareas.get(posicion);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                if(miTareaBorrar.isPrioritaria()){
-                    listaTareasPrio.remove(miTareaBorrar);
-                    adapter.notifyDataSetChanged();
+            if(itemId == R.id.it_descripcion){
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    mostrarDescripcion(listaTareas.get(posicion).getDescripcion());
                 }
-            }
-            listaTareas.remove(miTareaBorrar);
-            adapter.notifyDataSetChanged();
+                Toast.makeText(this, "Descripción", Toast.LENGTH_SHORT).show();
 
-            Toast.makeText(this, "Borrar", Toast.LENGTH_SHORT).show();
-            return true;
+                return true;
+            } else if (itemId == R.id.it_editar) {
+                Toast.makeText(this, "Editar", Toast.LENGTH_SHORT).show();
+                return true;
+            }else {
+
+
+                Tarea miTareaBorrar = listaTareas.get(posicion);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    if(miTareaBorrar.isPrioritaria()){
+                        listaTareasPrio.remove(miTareaBorrar);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+                listaTareas.remove(miTareaBorrar);
+                adapter.notifyDataSetChanged();
+
+                Toast.makeText(this, "Borrar", Toast.LENGTH_SHORT).show();
+
+            }
+        }else{
+            Tarea tareSeleccionada = adapter.getTareaSeleccionada();
+
+            int posicion = listaTareasPrio.indexOf(tareSeleccionada);
+
+            if (itemId == R.id.it_descripcion){
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    mostrarDescripcion(listaTareasPrio.get(posicion).getDescripcion());
+                }
+                return true;
+            }else if (itemId == R.id.it_editar) {
+                Toast.makeText(this, "Editar", Toast.LENGTH_SHORT).show();
+                return true;
+            }else{
+                Tarea miTareaBorrar = listaTareasPrio.get(posicion);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    if(miTareaBorrar.isPrioritaria()){
+                        listaTareasPrio.remove(miTareaBorrar);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+                listaTareas.remove(miTareaBorrar);
+                adapter.notifyDataSetChanged();
+
+                Toast.makeText(this, "Borrar", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
         }
+        return true;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
