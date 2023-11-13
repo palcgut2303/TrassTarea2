@@ -1,8 +1,14 @@
 package com.example.trasstarea2.fragmentos;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -15,6 +21,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.trasstarea2.R;
 import com.example.trasstarea2.viewModel.TareaViewModel;
@@ -94,6 +101,27 @@ public class Datos_Primer_Fragmento extends Fragment {
         sp_progreso.setAdapter(adaptadorProg);
 
 
+        tv_nombreTarea.setText(compartirViewModel.getTituloTarea().getValue());
+        tv_fechaCreacion.setText(compartirViewModel.getFechaCreacion().getValue());
+        tv_fechaObjetivo.setText(compartirViewModel.getFechaObjetivo().getValue());
+        int index = 0;
+        if(compartirViewModel.getProgreso().getValue() != null){
+            if(compartirViewModel.getProgreso().getValue().equals("No iniciada")){
+                index = 0;
+            }else if (compartirViewModel.getProgreso().getValue().equals("Iniciada")){
+                index = 1;
+            }else if (compartirViewModel.getProgreso().getValue().equals("Avanzada")){
+                index = 2;
+            }else if(compartirViewModel.getProgreso().getValue().equals("Casi Finalizada")){
+                index = 3;
+            }else{
+                index = 4;
+            }
+        }
+
+
+        sp_progreso.setSelection(index);
+        checkBox.setChecked(Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue()));
         return  main;
     }
 
@@ -159,6 +187,9 @@ public class Datos_Primer_Fragmento extends Fragment {
         compartirViewModel.setPrioritaria(checkBox.isChecked());
         compartirViewModel.setProgreso(sp_progreso.getSelectedItem().toString());
 
+
+
+
         requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.segundo_fragment,new Datos_Segundo_Fragmento()).addToBackStack(null).commit();
 
         View fragmentContainer1 = requireActivity().findViewById(R.id.primer_fragment);
@@ -171,5 +202,8 @@ public class Datos_Primer_Fragmento extends Fragment {
 
 
 
+
     }
+
+
 }

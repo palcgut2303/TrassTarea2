@@ -1,7 +1,10 @@
 package com.example.trasstarea2.fragmentos;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,7 +22,7 @@ import android.widget.TextView;
 
 import com.example.trasstarea2.R;
 import com.example.trasstarea2.viewModel.TareaViewModel;
-
+import android.content.Intent;
 
 public class Datos_Segundo_Fragmento extends Fragment {
 
@@ -123,7 +126,7 @@ public class Datos_Segundo_Fragmento extends Fragment {
         compartirViewModel.getTituloTarea().observe(this,observadorTitulo);
         compartirViewModel.getFechaCreacion().observe(this,observadorFechaCreacion);
         compartirViewModel.getFechaObjetivo().observe(this,observadorFechaObjetivo);
-        compartirViewModel.getProgreso().observe(this,observadorProgreso);
+        //compartirViewModel.getProgreso().observe(this,observadorProgreso);
         compartirViewModel.getPrioritaria().observe(this,observadorPrioritaria);
         compartirViewModel.getDescripcion().observe(this,observadorDescripcion);
     }
@@ -142,10 +145,12 @@ public class Datos_Segundo_Fragmento extends Fragment {
        bt_guardar = main.findViewById(R.id.bt_Guardar);
        bt_guardar.setOnClickListener(this::guardar);
        tv_descripcion = main.findViewById(R.id.tvMulti_Descripcion);
+
+        tv_descripcion.setText(compartirViewModel.getDescripcion().getValue());
+
+
+
        return main;
-
-
-
     }
 
 
@@ -163,14 +168,21 @@ public class Datos_Segundo_Fragmento extends Fragment {
 
 
     public void volver(View view){
+        compartirViewModel.setDescripcion(tv_descripcion.getText().toString());
 
-        requireActivity().getSupportFragmentManager().popBackStack();
+        requireActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.primer_fragment, new Datos_Primer_Fragmento())
+                .commit();
 
         View fragmentContainer1 = requireActivity().findViewById(R.id.primer_fragment);
         View fragmentContainer2 = requireActivity().findViewById(R.id.segundo_fragment);
 
         fragmentContainer1.setVisibility(View.VISIBLE);
         fragmentContainer2.setVisibility(View.GONE);
+
+
+
+
     }
 
 
