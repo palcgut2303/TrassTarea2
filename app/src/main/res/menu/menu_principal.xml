@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <group
+        android:id="@+id/it_group_gestion_noticias"
+        android:checkableBehavior="single"
+        android:orderInCategory="200">
+        <item
+            android:id="@+id/it_añadirTarea"
+            android:icon="@android:drawable/checkbox_on_background"
+            android:orderInCategory="210"
+            android:title="@string/it_añadir_Tarea"
+            app:showAsAction="ifRoom|withText" />
+        <item
+            android:id="@+id/it_mostrarPri"
+            android:icon="@drawable/baseline_star_24"
+            android:orderInCategory="220"
+            android:title="@string/it_ver_prioritarias"
+            app:showAsAction="ifRoom|withText" />
+    </group>
+
+    <group
+        android:id="@+id/it_group_add"
+        android:orderInCategory="400">
+        <item
+            android:id="@+id/it_acercade"
+            android:contentDescription="@string/desc_it_acercade"
+            android:orderInCategory="410"
+            android:title="@string/it_acercade"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/it_salir"
+            android:contentDescription="@string/desc_it_salir"
+            android:orderInCategory="420"
+            android:title="@string/it_salir"
+            app:showAsAction="never" />
+    </group>
+</menu>

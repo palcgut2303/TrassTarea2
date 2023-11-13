@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">TrassTarea2</string>
+    <string name="slogan">Tus Tareas, Tu Ritmo, Tu Éxito.</string>
+    <string name="bt_empezar">EMPEZAR</string>
+    <string name="noTareas">No hay tareas.</string>
+    <string name="noTarPri">No hay tareas prioritarias.</string>
+    <string name="nombreTarea">Nombre de la Tarea</string>
+    <string name="formato_fecha">dd/mm/aaaa</string>
+    <string name="quedan">Quedan:</string>
+    <string name="dias">dias</string>
+    <string name="numDias">00</string>
+    <string name="it_principal">Pantalla principal</string>
+    <string name="desc_it_principal">Volver a la pantalla principal</string>
+    <string name="it_pref_menu">Preferencias</string>
+    <string name="it_salir">Salir</string>
+    <string name="desc_it_salir">Salir de la aplicación</string>
+    <string name="it_acercade">Acerca de...</string>
+    <string name="desc_it_acercade">Autor y versión</string>
+    <string name="it_añadir_Tarea">Añadir Tarea</string>
+    <string name="it_ver_prioritarias">Tareas Prioritarias</string>
+    <string name="desc_it_eliminar_menu">Borra una noticia de la BD</string>
+    <string name="it_cargar_bd_menu">Cargar ejemplos</string>
+    <string name="it_borrar_bd_menu">Resetear Base de Datos</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="editar">Editar</string>
+    <string name="borrar">Borrar</string>
+    <string name="añadirTarea">Añadir Tarea</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ejemploTextoFragment">Hola esto es un texto ejemplo</string>
+    <string name="nombre_Tarea">Nombre Tarea:</string>
+    <string name="fecha_creacion">Fecha Creacion(yyyy-mm-dd):</string>
+    <string name="fecha_objetivo">Fecha Objetivo(yyyy-mm-aa):</string>
+    <string name="bt_fragment_siguiente">Siguiente</string>
+    <string name="descripcion_frag">Descripcion de la Tarea</string>
+    <string name="volver">Volver</string>
+    <string name="guardar">Guardar</string>
+    <string name="progreso">Progreso:</string>
+    <string name="prioritaria">Prioritaria:</string>
+    <string name="cerrar">Cerrar</string>
+</resources>

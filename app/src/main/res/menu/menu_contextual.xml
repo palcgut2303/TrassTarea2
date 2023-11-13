@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/it_descripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/descripcion" />
+    <item
+        android:id="@+id/it_editar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/editar" />
+    <item
+        android:id="@+id/it_borrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/borrar" />
+</menu>
