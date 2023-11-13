@@ -54,9 +54,9 @@ public class Datos_Segundo_Fragmento extends Fragment {
 
 
 
-    public interface ComunicacionCrearTarea{
-        void onBotonAgregarTarea(Tarea tarea);
-        //ArrayList<Tarea> onListarTareas();
+   public interface ComunicacionCrearTarea{
+        void onBotonAgregarTarea();
+
     }
 
     private ComunicacionCrearTarea comunicador2;
@@ -161,7 +161,7 @@ public class Datos_Segundo_Fragmento extends Fragment {
 
     private void guardar(View view) {
 
-        nombreTarea = compartirViewModel.getTituloTarea().getValue();
+        /*nombreTarea = compartirViewModel.getTituloTarea().getValue();
         fechaCreacion = compartirViewModel.getFechaCreacion().getValue();
         fechaObjetivo = compartirViewModel.getFechaObjetivo().getValue();
         progresoSp = compartirViewModel.getProgreso().getValue();
@@ -180,30 +180,16 @@ public class Datos_Segundo_Fragmento extends Fragment {
            }
 
 
-        }
+        }*/
 
-        comunicador2.onBotonAgregarTarea(miTarea);
 
+        comunicador2.onBotonAgregarTarea();
         //comunicador2.onBotonAgregarTarea(miTarea);
 
         getActivity().finish();
     }
 
-    private int numProgreso(String progresoSp) {
 
-        if(progresoSp.equalsIgnoreCase("No iniciada")){
-            return 0;
-        }else if(progresoSp.equalsIgnoreCase("Iniciada")){
-            return 25;
-        } else if (progresoSp.equalsIgnoreCase("Avanzada")) {
-            return 50;
-        } else if (progresoSp.equalsIgnoreCase("Casi Finalizada")) {
-            return 75;
-        }else{
-            return 100;
-        }
-
-    }
 
     public void volver(View view){
         requireActivity().getSupportFragmentManager().popBackStack();

@@ -17,7 +17,8 @@ public class TareaViewModel extends ViewModel {
     private MutableLiveData<String> progreso;
     private MutableLiveData<Boolean> prioritaria;
 
-    private ArrayList<Tarea> listaTareas = new ArrayList<>();
+        private MutableLiveData<Integer> id;
+
 
     public MutableLiveData<String> getTituloTarea() {
         if(tituloTarea == null){
@@ -37,20 +38,15 @@ public class TareaViewModel extends ViewModel {
         this.descripcion = descripcion;
     }
 
-    public ArrayList<Tarea> getListaTareas(){
-        if(listaTareas == null){
-            listaTareas = new ArrayList<>();
+    public MutableLiveData<Integer> getId(){
+        if(id == null){
+            id = new MutableLiveData<>();
         }
-
-        return listaTareas;
+        return id;
     }
 
-    public void setListaTareas(ArrayList<Tarea> listaTareas) {
-        this.listaTareas = getListaTareas();
-    }
-
-    public void agregarTarea(Tarea nuevaTarea){
-        listaTareas.add(nuevaTarea);
+    public void setId(int id){
+        this.id.setValue(id);
     }
 
     public void setTituloTarea(String tituloTar) {

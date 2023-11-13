@@ -2,6 +2,7 @@ package com.example.trasstarea2.actividades;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -26,8 +27,15 @@ public class CrearTareas extends AppCompatActivity implements Datos_Segundo_Frag
 
     TareaViewModel tareaViewModel;
 
+    private String nombreTarea;
+    private String fechaCreacion;
+    private String fechaObjetivo;
+    private boolean esPrioritaria;
+    private String progresoSp;
+    //int intProgreso = numProgreso(progresoSp)
+    private String descripcion;
 
-
+    private int contadorId = 0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,16 +58,47 @@ public class CrearTareas extends AppCompatActivity implements Datos_Segundo_Frag
     }
 
     @Override
-    public void onBotonAgregarTarea(Tarea tarea) {
+    public void onBotonAgregarTarea() {
+        nombreTarea = tareaViewModel.getTituloTarea().getValue();
+        fechaCreacion = tareaViewModel.getFechaCreacion().getValue();
+        fechaObjetivo = tareaViewModel.getFechaObjetivo().getValue();
+        progresoSp = tareaViewModel.getProgreso().getValue();
+        esPrioritaria = Boolean.TRUE.equals(tareaViewModel.getPrioritaria().getValue());
+        descripcion = tareaViewModel.getDescripcion().getValue();
 
-        tareaViewModel.agregarTarea(tarea);
+        int numProgreso = numProgreso(progresoSp);
 
 
+        Tarea miTarea = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            if(esPrioritaria){
+                miTarea = new Tarea(contadorId++,nombreTarea,descripcion,numProgreso,esPrioritaria,fechaCreacion,fechaObjetivo,R.drawable.baseline_star_24);
+            }else{
+                miTarea = new Tarea(contadorId++,nombreTarea,descripcion,numProgreso,esPrioritaria,fechaCreacion,fechaObjetivo,R.drawable.baseline_star_border_24);
+            }
+
+            Intent intentVolver = new Intent();
+            intentVolver.putExtra("TareaDevuelta",miTarea);
+            setResult(RESULT_OK, intentVolver);
+            finish();
+
+        }
     }
 
+    private int numProgreso(String progresoSp) {
 
-    public ArrayList<Tarea> onListarTareas() {
-        return tareaViewModel.getListaTareas();
+        if(progresoSp.equalsIgnoreCase("No iniciada")){
+            return 0;
+        }else if(progresoSp.equalsIgnoreCase("Iniciada")){
+            return 25;
+        } else if (progresoSp.equalsIgnoreCase("Avanzada")) {
+            return 50;
+        } else if (progresoSp.equalsIgnoreCase("Casi Finalizada")) {
+            return 75;
+        }else{
+            return 100;
+        }
+
     }
 
 

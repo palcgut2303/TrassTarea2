@@ -1,6 +1,7 @@
 package com.example.trasstarea2.actividades;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -15,6 +16,10 @@ import android.widget.TextView;
 import android.view.Menu;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
@@ -75,8 +80,6 @@ public class ListadoTareasActivity extends AppCompatActivity{
 
             llenarTareas();
 
-
-           listaTareas = (ArrayList<Tarea>) tareaViewModel.getListaTareas();
             listaTareasPrio = TareasPri();
 
 
@@ -146,7 +149,18 @@ public class ListadoTareasActivity extends AppCompatActivity{
             Toast.makeText(this, "Mostar Prioritarias ", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.it_añadirTarea) {
             Intent intentCrearTarea = new Intent(this, CrearTareas.class);
-            startActivity(intentCrearTarea);
+            ActivityResultLauncher<Intent> lanzador = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult o) {
+                    if (o.getResultCode() == Activity.RESULT_OK) {
+                        //No hay códigos de actividad
+                        Intent intentDevuelto = o.getData();
+                        Tarea tareaDevuelta = (Tarea) intentDevuelto.getExtras().get("TareaDevuelta");
+                        listaTareas.add(tareaDevuelta);
+                    }
+                }
+
+            }) ;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -192,11 +206,11 @@ public class ListadoTareasActivity extends AppCompatActivity{
     private void llenarTareas() {
         try {
 
-            tareaViewModel.agregarTarea(new Tarea("TareaUT1","Holaa esta es mi descripcion Tarea 1",50,true,"2023 / 12 / 12","2024 / 02 / 20",R.drawable.baseline_star_24));
-            tareaViewModel.agregarTarea(new Tarea("TareaUT2","Hola esta es mi descripcion Tarea 2",0,false,"2023 / 02 / 12","2023 / 05 / 12",R.drawable.baseline_star_border_24));
-            tareaViewModel.agregarTarea(new Tarea("TareaUT3","Hola esta es mi descripcion Tarea 3",50,true,"2023 / 09 / 02","2023 / 10 / 02",R.drawable.baseline_star_24));
-            tareaViewModel.agregarTarea(new Tarea("TareaUT4","Hola esta es mi descripcion Tarea 4",50,true,"2023 / 03 / 23","2023 / 05 / 12",R.drawable.baseline_star_24));
-            tareaViewModel.agregarTarea(new Tarea("TareaUT5","Hola esta es mi descripcion Tarea 5",75,false,"2023 / 05 / 31","2023 / 05 / 31",R.drawable.baseline_star_border_24));
+            listaTareas.add(new Tarea(1,"TareaUT1","Holaa esta es mi descripcion Tarea 1",50,true,"2023 / 12 / 12","2024 / 02 / 20",R.drawable.baseline_star_24));
+            listaTareas.add(new Tarea(2,"TareaUT2","Hola esta es mi descripcion Tarea 2",0,false,"2023 / 02 / 12","2023 / 05 / 12",R.drawable.baseline_star_border_24));
+            listaTareas.add(new Tarea(3,"TareaUT3","Hola esta es mi descripcion Tarea 3",50,true,"2023 / 09 / 02","2023 / 10 / 02",R.drawable.baseline_star_24));
+            listaTareas.add(new Tarea(4,"TareaUT4","Hola esta es mi descripcion Tarea 4",50,true,"2023 / 03 / 23","2023 / 05 / 12",R.drawable.baseline_star_24));
+            listaTareas.add(new Tarea(5,"TareaUT5","Hola esta es mi descripcion Tarea 5",75,false,"2023 / 05 / 31","2023 / 05 / 31",R.drawable.baseline_star_border_24));
 
 
         }catch (Exception ex){
