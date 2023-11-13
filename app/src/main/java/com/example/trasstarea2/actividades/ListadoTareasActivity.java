@@ -192,7 +192,7 @@ public class ListadoTareasActivity extends AppCompatActivity{
     private void llenarTareas() {
         try {
 
-            tareaViewModel.agregarTarea(new Tarea("TareaUT1","Hola esta es mi descripcion Tarea 1",50,true,"2023 / 12 / 12","2024 / 02 / 20",R.drawable.baseline_star_24));
+            tareaViewModel.agregarTarea(new Tarea("TareaUT1","Holaa esta es mi descripcion Tarea 1",50,true,"2023 / 12 / 12","2024 / 02 / 20",R.drawable.baseline_star_24));
             tareaViewModel.agregarTarea(new Tarea("TareaUT2","Hola esta es mi descripcion Tarea 2",0,false,"2023 / 02 / 12","2023 / 05 / 12",R.drawable.baseline_star_border_24));
             tareaViewModel.agregarTarea(new Tarea("TareaUT3","Hola esta es mi descripcion Tarea 3",50,true,"2023 / 09 / 02","2023 / 10 / 02",R.drawable.baseline_star_24));
             tareaViewModel.agregarTarea(new Tarea("TareaUT4","Hola esta es mi descripcion Tarea 4",50,true,"2023 / 03 / 23","2023 / 05 / 12",R.drawable.baseline_star_24));
