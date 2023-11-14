@@ -26,11 +26,19 @@ public class EditarTarea  extends AppCompatActivity {
 
 
 
-        savedInstanceState = getIntent().getExtras();
+        /*savedInstanceState = getIntent().getExtras();
         Tarea tareaEditable = savedInstanceState.getParcelable("tareaEditable");
         tercerFragmento = Datos_Tercer_Fragmento.newInstance(tareaEditable);
 
-        tercerFragmento.setArguments(savedInstanceState);
+        tercerFragmento.setArguments(savedInstanceState);*/
+
+        tercerFragmento = new Datos_Tercer_Fragmento();
+
+        Bundle bundle = getIntent().getExtras();
+        Tarea tareaEditable = bundle.getParcelable("tareaEditable");
+
+
+
 
 
         getSupportFragmentManager().beginTransaction().replace(R.id.tercer_fragment,tercerFragmento).addToBackStack(null).commit();

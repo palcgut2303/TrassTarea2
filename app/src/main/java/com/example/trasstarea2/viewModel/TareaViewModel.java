@@ -18,6 +18,7 @@ public class TareaViewModel extends ViewModel {
     private MutableLiveData<Boolean> prioritaria;
     private MutableLiveData<Integer> id;
 
+    private Tarea miTarea;
 
     public MutableLiveData<String> getTituloTarea() {
         if(tituloTarea == null){
@@ -42,6 +43,14 @@ public class TareaViewModel extends ViewModel {
             id = new MutableLiveData<>();
         }
         return id;
+    }
+
+    public Tarea getMiTarea() {
+        return miTarea;
+    }
+
+    public void setMiTarea(Tarea miTarea) {
+        this.miTarea = miTarea;
     }
 
     public void setId(int id){

@@ -1,66 +1,183 @@
 package com.example.trasstarea2.fragmentos;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.trasstarea2.R;
+import com.example.trasstarea2.viewModel.TareaViewModel;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Datos_Cuarto_Fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class Datos_Cuarto_Fragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private Button bt_volver,bt_guardar;
+    private TextView tv_nombreTarea,tv_fechaCreacion,tv_fechaObjetivo,tv_descripcion;
+    private CheckBox prioritaria;
+    private Spinner progreso;
+    private TareaViewModel compartirViewModel;
+    private Observer<String> observadorTitulo;
+    private Observer<String> observadorFechaCreacion;
+    private Observer<String> observadorFechaObjetivo;
+    private Observer<String> observadorProgreso;
+    private Observer<Boolean> observadorPrioritaria;
+    private Observer<String> observadorDescripcion;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String nombreTarea;
+    private String fechaCreacion;
+    private String fechaObjetivo;
+    private boolean esPrioritaria;
+    private String progresoSp;
+    //int intProgreso = numProgreso(progresoSp)
+    private String descripcion;
 
-    public Datos_Cuarto_Fragment() {
-        // Required empty public constructor
+
+
+   /* public interface ComunicacionCrearTarea{
+        void onBotonAgregarTarea();
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Datos_Cuarto_Fragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Datos_Cuarto_Fragment newInstance(String param1, String param2) {
-        Datos_Cuarto_Fragment fragment = new Datos_Cuarto_Fragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+    private Datos_Segundo_Fragmento.ComunicacionCrearTarea comunicador2;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof Datos_Segundo_Fragmento.ComunicacionCrearTarea) {  //Si la Actividad implementa la interfaz de comunicación
+            comunicador2 = (Datos_Segundo_Fragmento.ComunicacionCrearTarea) context; //la Actividad se convierte en comunicador
+        } else {
+            throw new ClassCastException(context + " debe implementar interfaz de comunicación con el 1º fragmento");
+        }
+    }
+*/
+
+
+    public static Datos_Segundo_Fragmento newInstance(String param1, String param2) {
+        Datos_Segundo_Fragmento fragment = new Datos_Segundo_Fragmento();
+
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        compartirViewModel = new ViewModelProvider(requireActivity()).get(TareaViewModel.class);
+
+        observadorTitulo = new Observer<String>() {
+            @Override
+            public void onChanged(String text) {
+                nombreTarea = text;
+            }
+        };
+
+        observadorFechaCreacion = new Observer<String>() {
+            @Override
+            public void onChanged(String text) {
+                fechaCreacion = text;
+            }
+        };
+
+        observadorFechaObjetivo = new Observer<String>() {
+            @Override
+            public void onChanged(String text) {
+                fechaObjetivo = text;
+            }
+        };
+
+        observadorProgreso = new Observer<String>() {
+            @Override
+            public void onChanged(String text) {
+                progresoSp = text;
+            }
+        };
+
+        observadorPrioritaria = new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                esPrioritaria = aBoolean;
+            }
+        };
+
+        observadorDescripcion = new Observer<String>() {
+            @Override
+            public void onChanged(String text) {
+                descripcion = text;
+            }
+        };
+
+
+        compartirViewModel.getTituloTarea().observe(this,observadorTitulo);
+        compartirViewModel.getFechaCreacion().observe(this,observadorFechaCreacion);
+        compartirViewModel.getFechaObjetivo().observe(this,observadorFechaObjetivo);
+        compartirViewModel.getPrioritaria().observe(this,observadorPrioritaria);
+        compartirViewModel.getDescripcion().observe(this,observadorDescripcion);
     }
 
+
+
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cuarto_fragment, container, false);
+
+        View main =  inflater.inflate(R.layout.fragment_cuarto_fragment, container, false);
+
+        bt_volver = main.findViewById(R.id.bt_Volver2);
+        bt_volver.setOnClickListener(this::volver);
+        bt_guardar = main.findViewById(R.id.bt_Guardar2);
+        bt_guardar.setOnClickListener(this::guardar);
+        tv_descripcion = main.findViewById(R.id.tvMulti_Descripcion2);
+
+        tv_descripcion.setText(compartirViewModel.getDescripcion().getValue());
+
+
+
+        return main;
     }
+
+
+
+    private void guardar(View view) {
+
+
+        compartirViewModel.setDescripcion(tv_descripcion.getText().toString());
+        //comunicador2.onBotonAgregarTarea();
+
+
+        getActivity().finish();
+    }
+
+
+
+    public void volver(View view){
+        compartirViewModel.setDescripcion(tv_descripcion.getText().toString());
+
+        requireActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.tercer_fragment, new Datos_Primer_Fragmento())
+                .commit();
+
+        View fragmentContainer1 = requireActivity().findViewById(R.id.tercer_fragment);
+        View fragmentContainer2 = requireActivity().findViewById(R.id.cuarto_fragment);
+
+        fragmentContainer1.setVisibility(View.VISIBLE);
+        fragmentContainer2.setVisibility(View.GONE);
+
+
+
+
+    }
+
+
 }

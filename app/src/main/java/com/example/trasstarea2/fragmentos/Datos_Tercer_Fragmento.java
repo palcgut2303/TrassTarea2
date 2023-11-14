@@ -78,29 +78,19 @@ public class Datos_Tercer_Fragmento extends Fragment {
         adaptadorProg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_progreso.setAdapter(adaptadorProg);
 
+       // tarea = (Tarea) getArguments().getString("tareaEditable");
 
 
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-             tarea = (Tarea) bundle.getParcelable("tareaEditable");
-
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             tv_nombreTarea.setText(tarea.getTitulo());
             tv_fechaCreacion.setText(tarea.getFechaCreacion());
             tv_fechaObjetivo.setText(tarea.getFechaObjetivo());
             int numeroProgreso =  tarea.getProgreso();
             sp_progreso.setSelection(numeroProgreso);
             checkBox.setChecked(Boolean.TRUE.equals(tarea.isPrioritaria()));
-        }
+        }*/
 
-
-
-
-
-
-        tv_nombreTarea.setText(compartirViewModel.getTituloTarea().getValue());
+       /* tv_nombreTarea.setText(compartirViewModel.getTituloTarea().getValue());
         tv_fechaCreacion.setText(compartirViewModel.getFechaCreacion().getValue());
         tv_fechaObjetivo.setText(compartirViewModel.getFechaObjetivo().getValue());
         int index = 0;
@@ -118,14 +108,8 @@ public class Datos_Tercer_Fragmento extends Fragment {
             }
         }
         sp_progreso.setSelection(index);
-        checkBox.setChecked(Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue()));
+        checkBox.setChecked(Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue()));*/
         return  main;
-    }
-
-
-
-    private void cerrar(View view) {
-        getActivity().finish();
     }
 
     private void fechaCreacion(View view) {
@@ -178,13 +162,13 @@ public class Datos_Tercer_Fragmento extends Fragment {
     public void siguiente(View view){
 
 
-        compartirViewModel.setTituloTarea(tv_nombreTarea.getText().toString());
+        /*compartirViewModel.setTituloTarea(tv_nombreTarea.getText().toString());
         compartirViewModel.setFechaCreacion(tv_fechaCreacion.getText().toString());
         compartirViewModel.setFechaObjetivo(tv_fechaObjetivo.getText().toString());
         compartirViewModel.setPrioritaria(checkBox.isChecked());
-        compartirViewModel.setProgreso(sp_progreso.getSelectedItem().toString());
+        compartirViewModel.setProgreso(sp_progreso.getSelectedItem().toString());*/
 
-        requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.cuarto_fragment,new Datos_Segundo_Fragmento()).addToBackStack(null).commit();
+        requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.cuarto_fragment,new Datos_Cuarto_Fragment()).addToBackStack(null).commit();
 
         View fragmentContainer1 = requireActivity().findViewById(R.id.tercer_fragment);
         View fragmentContainer2 = requireActivity().findViewById(R.id.cuarto_fragment);

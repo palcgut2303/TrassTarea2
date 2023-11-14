@@ -37,32 +37,13 @@ public class Datos_Primer_Fragmento extends Fragment {
     private TareaViewModel compartirViewModel;
     private ArrayList<String> progreso = new ArrayList<>();
 
-   /* public interface OnDatosTareaListener{
-        void onDatosTareaIngresados(Tarea tarea);
-    }
-
-    private OnDatosTareaListener listener;
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnDatosTareaListener) {
-            listener = (OnDatosTareaListener) context;
-        } else {
-            throw new ClassCastException(context.toString() + " debe implementar OnDatosTareaListener");
-        }
-    }*/
 
 
     public Datos_Primer_Fragmento() {
         // Required empty public constructor
     }
 
-   /* public static Datos_Primer_Fragmento newInstance(String param1, String param2) {
-        Datos_Primer_Fragmento fragment = new Datos_Primer_Fragmento();
 
-        return fragment;
-    }*/
 
 
     @Override
@@ -126,10 +107,6 @@ public class Datos_Primer_Fragmento extends Fragment {
     }
 
 
-
-    private void cerrar(View view) {
-        getActivity().finish();
-    }
 
     private void fechaCreacion(View view) {
             if(view.getId()==R.id.tv_fechaCreacion){
