@@ -28,6 +28,9 @@
         <activity
             android:name=".actividades.CrearTareas"
             android:exported="true" />
+        <activity
+            android:name=".actividades.EditarTarea"
+            android:exported="true" />
     </application>
 
 </manifest>

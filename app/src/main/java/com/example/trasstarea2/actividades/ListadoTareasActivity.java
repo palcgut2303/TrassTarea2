@@ -204,6 +204,10 @@ public class ListadoTareasActivity extends AppCompatActivity{
 
                 return true;
             } else if (itemId == R.id.it_editar) {
+                Intent intentEditar = new Intent(this, EditarTarea.class);
+                intentEditar.putExtra("tareaEditable",tareSeleccionada);
+                startActivity(intentEditar);
+
                 Toast.makeText(this, "Editar", Toast.LENGTH_SHORT).show();
                 return true;
             }else {
@@ -253,6 +257,8 @@ public class ListadoTareasActivity extends AppCompatActivity{
         }
         return true;
     }
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void llenarTareas() {

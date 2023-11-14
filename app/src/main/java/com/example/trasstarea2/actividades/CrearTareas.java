@@ -38,16 +38,7 @@ public class CrearTareas extends AppCompatActivity implements Datos_Segundo_Frag
 
         fragmentoUno = new Datos_Primer_Fragmento();
 
-        //fragmentoDos = new Datos_Segundo_Fragmento();
-
         getSupportFragmentManager().beginTransaction().replace(R.id.primer_fragment,fragmentoUno).addToBackStack(null).commit();
-
-        /*FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.primer_fragment, new Datos_Primer_Fragmento());
-        fragmentTransaction.add(R.id.segundo_fragment, new Datos_Segundo_Fragmento());
-        fragmentTransaction.commit();*/
-
-
 
     }
 
