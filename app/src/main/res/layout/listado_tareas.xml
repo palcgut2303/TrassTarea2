@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/colorControlActivated">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcView_Tareas"
@@ -12,9 +13,11 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@+id/tv_Tareas"
         app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="3dp"
         tools:listitem="@layout/item_recycler" />
+
     <TextView
         android:id="@+id/tv_Tareas"
         android:layout_width="409dp"

@@ -4,12 +4,13 @@
     android:id="@+id/tercer_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#5E5C5C"
     tools:context=".fragmentos.Datos_Tercer_Fragmento">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
+        android:background="?attr/colorControlActivated"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -23,6 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/nombre_Tarea"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <EditText
@@ -31,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -46,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/fecha_creacion"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <EditText
@@ -54,9 +58,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:focusable="false"
                 android:ems="10"
+                android:focusable="false"
                 android:inputType="text"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -71,6 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/fecha_objetivo"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <EditText
@@ -79,9 +85,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:focusable="false"
                 android:ems="10"
-                android:inputType="text" />
+                android:focusable="false"
+                android:inputType="text"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
         <LinearLayout
@@ -96,6 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/progreso"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <Spinner
@@ -116,26 +124,34 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/prioritaria"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <CheckBox
                 android:id="@+id/checkBox2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:buttonTint="#000000" />
         </LinearLayout>
 
         <Button
             android:id="@+id/bt_siguiente2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bt_fragment_siguiente" />
+            android:layout_marginTop="20sp"
+            android:background="@drawable/bordes_item"
+            android:text="@string/bt_fragment_siguiente"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/bt_cerrar2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cerrar" />
+            android:layout_marginTop="20sp"
+            android:background="@drawable/bordes_item"
+            android:text="@string/cerrar"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 

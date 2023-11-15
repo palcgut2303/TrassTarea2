@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TrassTarea2</string>
+    <string name="app_name">TrassTarea</string>
     <string name="slogan">Tus Tareas, Tu Ritmo, Tu Éxito.</string>
     <string name="bt_empezar">EMPEZAR</string>
     <string name="noTareas">No hay tareas.</string>

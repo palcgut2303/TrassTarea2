@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TrassTarea2"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+
         tools:targetApi="31">
         <activity
             android:name=".actividades.MainActivity"
@@ -31,6 +32,10 @@
         <activity
             android:name=".actividades.EditarTarea"
             android:exported="true" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

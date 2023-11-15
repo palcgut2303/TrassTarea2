@@ -9,23 +9,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
+        android:background="?attr/colorControlActivated"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="500sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
                 android:text="@string/nombre_Tarea"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/tv_nombreTareaa2"
-                android:layout_width="291dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
@@ -34,15 +36,17 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="500sp"
+            android:layout_width="match_parent"
             android:layout_height="62dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
                 android:layout_weight="1"
                 android:text="@string/fecha_creacion"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <EditText
@@ -58,15 +62,17 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="500sp"
+            android:layout_width="match_parent"
             android:layout_height="64dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
                 android:layout_weight="1"
                 android:text="@string/fecha_objetivo"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <EditText
@@ -81,7 +87,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="500sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -89,8 +95,10 @@
                 android:id="@+id/tv_Progreso2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
                 android:layout_weight="1"
                 android:text="@string/progreso"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <Spinner
@@ -101,7 +109,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="500sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -109,15 +117,18 @@
                 android:id="@+id/cb_Prioritaria2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
                 android:layout_weight="1"
                 android:text="@string/prioritaria"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <CheckBox
                 android:id="@+id/checkBox2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:buttonTint="#000000" />
         </LinearLayout>
 
         <LinearLayout
@@ -129,13 +140,19 @@
                 android:id="@+id/bt_siguiente2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bt_fragment_siguiente" />
+                android:layout_marginLeft="20sp"
+                android:background="@drawable/bordes_item"
+                android:text="@string/bt_fragment_siguiente"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/bt_cerrar2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cerrar" />
+                android:layout_marginLeft="20sp"
+                android:background="@drawable/bordes_item"
+                android:text="@string/cerrar"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
     </LinearLayout>
