@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,28 +86,21 @@ public class ListadoTareasActivity extends AppCompatActivity{
             tv_NoTarPri = findViewById(R.id.tv_noTarPri);
             tv_NoTarPri.setVisibility(View.INVISIBLE);
 
-            llenarTareas();
-
-            listaTareasPrio = TareasPri();
-
-
-            if(listaTareas.size() == 0){
-                tv_NoTareas.setVisibility(View.VISIBLE);
-            }else{
-                tv_NoTareas.setVisibility(View.INVISIBLE);
-            }
-
             recyclerTareas=findViewById(R.id.rcView_Tareas);
-            if(esPriori){
-                adapter = new Adaptador(this, listaTareasPrio);
-            }else{
-                adapter = new Adaptador(this, listaTareas);
+
+            if(savedInstanceState == null){
+                llenarTareas();
+                listaTareasPrio = TareasPri();
             }
 
+              if(esPriori){
+                    adapter = new Adaptador(this, listaTareasPrio);
+              }else{
+                    adapter = new Adaptador(this, listaTareas);
+              }
 
             recyclerTareas.setAdapter(adapter);
             recyclerTareas.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-
 
 
         }catch (Exception ex){
@@ -116,6 +110,31 @@ public class ListadoTareasActivity extends AppCompatActivity{
        registerForContextMenu(recyclerTareas);
 
 
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("listatareasTodas",listaTareas);
+        outState.putParcelableArrayList("listatareasPrioritarias",listaTareasPrio);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        listaTareas = savedInstanceState.getParcelableArrayList("listatareasTodas");
+        listaTareasPrio = savedInstanceState.getParcelableArrayList("listatareasPrioritarias");
+
+        if(esPriori){
+            adapter = new Adaptador(this, listaTareasPrio);
+            recyclerTareas.setAdapter(adapter);
+
+        }else{
+            adapter = new Adaptador(this, listaTareas);
+            recyclerTareas.setAdapter(adapter);
+
+        }
     }
 
     @Override
@@ -221,14 +240,7 @@ public class ListadoTareasActivity extends AppCompatActivity{
                 Intent intentEditar = new Intent(this, EditarTarea.class);
                 intentEditar.putExtra("tareaEditable",tareSeleccionada);
 
-
-
-
-                //startActivity(intentEditar);
-
                 lanzador2.launch(intentEditar);
-
-
 
                 Toast.makeText(this, "Editar", Toast.LENGTH_SHORT).show();
                 return true;

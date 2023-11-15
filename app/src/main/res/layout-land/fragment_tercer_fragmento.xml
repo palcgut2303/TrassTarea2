@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/primero_fragment"
+    android:id="@+id/tercer_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmentos.Datos_Primer_Fragmento">
+    tools:context=".fragmentos.Datos_Tercer_Fragmento">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,19 +13,19 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="500sp"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="287dp"
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/nombre_Tarea"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/tv_nombreTareaa"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_nombreTareaa2"
+                android:layout_width="291dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
@@ -34,7 +34,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="500sp"
             android:layout_height="62dp"
             android:orientation="horizontal">
 
@@ -46,7 +46,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/tv_fechaCreacion"
+                android:id="@+id/tv_fechaCreacion2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -58,7 +58,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="500sp"
             android:layout_height="64dp"
             android:orientation="horizontal">
 
@@ -70,7 +70,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/tv_fechaObjetivo"
+                android:id="@+id/tv_fechaObjetivo2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -81,12 +81,12 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="500sp"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_Progreso"
+                android:id="@+id/tv_Progreso2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -94,19 +94,19 @@
                 android:textSize="18sp" />
 
             <Spinner
-                android:id="@+id/sp_progreso"
+                android:id="@+id/sp_progreso2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="500dp"
+            android:layout_width="500sp"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/cb_Prioritaria"
+                android:id="@+id/cb_Prioritaria2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -114,7 +114,7 @@
                 android:textSize="18sp" />
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/checkBox2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
@@ -126,13 +126,13 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/bt_siguiente"
+                android:id="@+id/bt_siguiente2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/bt_fragment_siguiente" />
 
             <Button
-                android:id="@+id/bt_cerrar"
+                android:id="@+id/bt_cerrar2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cerrar" />

@@ -33,6 +33,7 @@ public class CrearTareas extends AppCompatActivity implements Datos_Segundo_Frag
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.crear_tarea);
         tareaViewModel = new ViewModelProvider(this).get(TareaViewModel.class);
 

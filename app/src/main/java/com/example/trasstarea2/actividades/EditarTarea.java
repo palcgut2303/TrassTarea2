@@ -30,6 +30,7 @@ public class EditarTarea  extends AppCompatActivity implements Datos_Cuarto_Frag
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.editar_tarea);
         tareaViewModel = new ViewModelProvider(this).get(TareaViewModel.class);
 

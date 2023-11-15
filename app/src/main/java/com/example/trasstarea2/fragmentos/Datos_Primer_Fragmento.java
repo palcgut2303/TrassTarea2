@@ -9,6 +9,8 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -61,6 +63,10 @@ public class Datos_Primer_Fragmento extends Fragment {
         // Inflate the layout for this fragment
         View main = inflater.inflate(R.layout.fragment_primer_fragmento, container, false);
 
+        /*if(savedInstanceState != null){
+            tv_nombreTarea = savedInstanceState.getParcelable("titulo");
+        }*/
+
         tv_nombreTarea = main.findViewById(R.id.tv_nombreTareaa);
 
         tv_fechaCreacion = main.findViewById(R.id.tv_fechaCreacion);
@@ -104,6 +110,13 @@ public class Datos_Primer_Fragmento extends Fragment {
         checkBox.setChecked(Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue()));
         return  main;
     }
+
+    /*@Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("titulo",tv_nombreTarea.getText().toString());
+
+    }*/
 
 
 
