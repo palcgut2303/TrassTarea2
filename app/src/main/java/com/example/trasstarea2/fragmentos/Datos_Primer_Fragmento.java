@@ -100,7 +100,6 @@ public class Datos_Primer_Fragmento extends Fragment {
             }
         }
 
-
         sp_progreso.setSelection(index);
         checkBox.setChecked(Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue()));
         return  main;

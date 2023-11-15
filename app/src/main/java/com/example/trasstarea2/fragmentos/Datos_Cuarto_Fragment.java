@@ -45,30 +45,24 @@ public class Datos_Cuarto_Fragment extends Fragment {
 
 
 
-   /* public interface ComunicacionCrearTarea{
-        void onBotonAgregarTarea();
+    public interface ComunicacionEditarTarea{
+        void onBotonGuardarTareaEditada();
+
 
     }
 
-    private Datos_Segundo_Fragmento.ComunicacionCrearTarea comunicador2;
+    private Datos_Cuarto_Fragment.ComunicacionEditarTarea comunicador2;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof Datos_Segundo_Fragmento.ComunicacionCrearTarea) {  //Si la Actividad implementa la interfaz de comunicación
-            comunicador2 = (Datos_Segundo_Fragmento.ComunicacionCrearTarea) context; //la Actividad se convierte en comunicador
+        if (context instanceof Datos_Cuarto_Fragment.ComunicacionEditarTarea) {  //Si la Actividad implementa la interfaz de comunicación
+            comunicador2 = (Datos_Cuarto_Fragment.ComunicacionEditarTarea) context; //la Actividad se convierte en comunicador
         } else {
             throw new ClassCastException(context + " debe implementar interfaz de comunicación con el 1º fragmento");
         }
     }
-*/
 
-
-    public static Datos_Segundo_Fragmento newInstance(String param1, String param2) {
-        Datos_Segundo_Fragmento fragment = new Datos_Segundo_Fragmento();
-
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -153,7 +147,7 @@ public class Datos_Cuarto_Fragment extends Fragment {
 
 
         compartirViewModel.setDescripcion(tv_descripcion.getText().toString());
-        //comunicador2.onBotonAgregarTarea();
+        comunicador2.onBotonGuardarTareaEditada();
 
 
         getActivity().finish();

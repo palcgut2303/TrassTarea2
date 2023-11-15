@@ -1,5 +1,6 @@
 package com.example.trasstarea2.actividades;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -9,15 +10,22 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.trasstarea2.R;
 import com.example.trasstarea2.datos.Tarea;
+import com.example.trasstarea2.fragmentos.Datos_Cuarto_Fragment;
 import com.example.trasstarea2.fragmentos.Datos_Tercer_Fragmento;
 import com.example.trasstarea2.viewModel.TareaViewModel;
 
-public class EditarTarea  extends AppCompatActivity {
+public class EditarTarea  extends AppCompatActivity implements Datos_Cuarto_Fragment.ComunicacionEditarTarea {
     TareaViewModel tareaViewModel;
 
     Datos_Tercer_Fragmento tercerFragmento;
 
-
+    private String nombreTarea;
+    private String fechaCreacion;
+    private String fechaObjetivo;
+    private boolean esPrioritaria;
+    private String progresoSp;
+    //int intProgreso = numProgreso(progresoSp)
+    private String descripcion;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,13 +33,6 @@ public class EditarTarea  extends AppCompatActivity {
         setContentView(R.layout.editar_tarea);
         tareaViewModel = new ViewModelProvider(this).get(TareaViewModel.class);
 
-
-
-        /*savedInstanceState = getIntent().getExtras();
-        Tarea tareaEditable = savedInstanceState.getParcelable("tareaEditable");
-        tercerFragmento = Datos_Tercer_Fragmento.newInstance(tareaEditable);
-
-        tercerFragmento.setArguments(savedInstanceState);*/
 
         tercerFragmento = new Datos_Tercer_Fragmento();
 
@@ -68,6 +69,51 @@ public class EditarTarea  extends AppCompatActivity {
 
 
 
+
+    }
+
+    @Override
+    public void onBotonGuardarTareaEditada() {
+        nombreTarea = tareaViewModel.getTituloTarea().getValue();
+        fechaCreacion = tareaViewModel.getFechaCreacion().getValue();
+        fechaObjetivo = tareaViewModel.getFechaObjetivo().getValue();
+        progresoSp = tareaViewModel.getProgreso().getValue();
+        esPrioritaria = Boolean.TRUE.equals(tareaViewModel.getPrioritaria().getValue());
+        descripcion = tareaViewModel.getDescripcion().getValue();
+
+        int numProgreso = numProgreso(progresoSp);
+
+        int idRandom = (int) (Math.random() * ((100 - 1) + 1)) + 1;
+
+
+        Tarea miTarea = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            if (esPrioritaria) {
+                miTarea = new Tarea(idRandom, nombreTarea, descripcion, numProgreso, esPrioritaria, fechaCreacion, fechaObjetivo, R.drawable.baseline_star_24);
+            } else {
+                miTarea = new Tarea(idRandom, nombreTarea, descripcion, numProgreso, esPrioritaria, fechaCreacion, fechaObjetivo, R.drawable.baseline_star_border_24);
+            }
+        }
+
+        Intent intentVolver = new Intent();
+        intentVolver.putExtra("TareaDevueltaEditada",miTarea);
+        setResult(RESULT_OK, intentVolver);
+        finish();
+    }
+
+    private int numProgreso(String progresoSp) {
+
+        if(progresoSp.equalsIgnoreCase("No iniciada")){
+            return 0;
+        }else if(progresoSp.equalsIgnoreCase("Iniciada")){
+            return 25;
+        } else if (progresoSp.equalsIgnoreCase("Avanzada")) {
+            return 50;
+        } else if (progresoSp.equalsIgnoreCase("Casi Finalizada")) {
+            return 75;
+        }else{
+            return 100;
+        }
 
     }
 }

@@ -78,17 +78,6 @@ public class Datos_Tercer_Fragmento extends Fragment {
         adaptadorProg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_progreso.setAdapter(adaptadorProg);
 
-       // tarea = (Tarea) getArguments().getString("tareaEditable");
-
-
-       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            tv_nombreTarea.setText(tarea.getTitulo());
-            tv_fechaCreacion.setText(tarea.getFechaCreacion());
-            tv_fechaObjetivo.setText(tarea.getFechaObjetivo());
-            int numeroProgreso =  tarea.getProgreso();
-            sp_progreso.setSelection(numeroProgreso);
-            checkBox.setChecked(Boolean.TRUE.equals(tarea.isPrioritaria()));
-        }*/
 
         tv_nombreTarea.setText(compartirViewModel.getTituloTarea().getValue());
         tv_fechaCreacion.setText(compartirViewModel.getFechaCreacion().getValue());
@@ -162,19 +151,19 @@ public class Datos_Tercer_Fragmento extends Fragment {
     public void siguiente(View view){
 
 
-        /*compartirViewModel.setTituloTarea(tv_nombreTarea.getText().toString());
+        compartirViewModel.setTituloTarea(tv_nombreTarea.getText().toString());
         compartirViewModel.setFechaCreacion(tv_fechaCreacion.getText().toString());
         compartirViewModel.setFechaObjetivo(tv_fechaObjetivo.getText().toString());
         compartirViewModel.setPrioritaria(checkBox.isChecked());
-        compartirViewModel.setProgreso(sp_progreso.getSelectedItem().toString());*/
+        compartirViewModel.setProgreso(sp_progreso.getSelectedItem().toString());
 
         requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.cuarto_fragment,new Datos_Cuarto_Fragment()).addToBackStack(null).commit();
 
-        View fragmentContainer1 = requireActivity().findViewById(R.id.tercer_fragment);
-        View fragmentContainer2 = requireActivity().findViewById(R.id.cuarto_fragment);
+        View fragmentContainer3 = requireActivity().findViewById(R.id.tercer_fragment);
+        View fragmentContainer4 = requireActivity().findViewById(R.id.cuarto_fragment);
 
-        fragmentContainer1.setVisibility(View.GONE);
-        fragmentContainer2.setVisibility(View.VISIBLE);
+        fragmentContainer3.setVisibility(View.GONE);
+        fragmentContainer4.setVisibility(View.VISIBLE);
 
 
     }
