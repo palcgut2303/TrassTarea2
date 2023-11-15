@@ -90,7 +90,7 @@ public class Datos_Tercer_Fragmento extends Fragment {
             checkBox.setChecked(Boolean.TRUE.equals(tarea.isPrioritaria()));
         }*/
 
-       /* tv_nombreTarea.setText(compartirViewModel.getTituloTarea().getValue());
+        tv_nombreTarea.setText(compartirViewModel.getTituloTarea().getValue());
         tv_fechaCreacion.setText(compartirViewModel.getFechaCreacion().getValue());
         tv_fechaObjetivo.setText(compartirViewModel.getFechaObjetivo().getValue());
         int index = 0;
@@ -108,7 +108,7 @@ public class Datos_Tercer_Fragmento extends Fragment {
             }
         }
         sp_progreso.setSelection(index);
-        checkBox.setChecked(Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue()));*/
+        checkBox.setChecked(Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue()));
         return  main;
     }
 
