@@ -71,6 +71,8 @@ public class ListadoTareasActivity extends AppCompatActivity{
     private int posicionTareasTodas;
 
     private int posicionPrio;
+
+    private Tarea tareSeleccionada;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -198,7 +200,7 @@ public class ListadoTareasActivity extends AppCompatActivity{
 
 
         if(!esPriori){
-            Tarea tareSeleccionada = adapter.getTareaSeleccionada();
+             tareSeleccionada = adapter.getTareaSeleccionada();
             posicion = listaTareas.indexOf(tareSeleccionada);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 if(tareSeleccionada.isPrioritaria()){
@@ -232,7 +234,6 @@ public class ListadoTareasActivity extends AppCompatActivity{
                 return true;
             }else {
 
-
                 Tarea miTareaBorrar = listaTareas.get(posicion);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     if(miTareaBorrar.isPrioritaria()){
@@ -247,7 +248,7 @@ public class ListadoTareasActivity extends AppCompatActivity{
 
             }
         }else{
-            Tarea tareSeleccionada = adapter.getTareaSeleccionada();
+             tareSeleccionada = adapter.getTareaSeleccionada();
 
              posicion = listaTareasPrio.indexOf(tareSeleccionada);
              posicionTareasTodas = listaTareas.indexOf(tareSeleccionada);
@@ -297,11 +298,16 @@ public class ListadoTareasActivity extends AppCompatActivity{
                     Tarea tareaDevueltaEditada = (Tarea) intentDevuelto.getExtras().get("TareaDevueltaEditada");
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         if(tareaDevueltaEditada.isPrioritaria()){
-
-                            listaTareasPrio.set(posicionPrio,tareaDevueltaEditada);
+                            if(tareSeleccionada.isPrioritaria()){
+                                listaTareasPrio.set(posicionPrio,tareaDevueltaEditada);
+                            }else{
+                                listaTareasPrio.add(tareaDevueltaEditada);
+                            }
                             listaTareas.set(posicion,tareaDevueltaEditada);
                         }else{
-                            listaTareasPrio.remove(posicionPrio);
+                            if(tareSeleccionada.isPrioritaria()){
+                                listaTareasPrio.remove(posicionPrio);
+                            }
                             listaTareas.set(posicion,tareaDevueltaEditada);
                         }
                     }
@@ -314,30 +320,30 @@ public class ListadoTareasActivity extends AppCompatActivity{
         ActivityResultLauncher<Intent> lanzador2 = registerForActivityResult(contrato2,respuesta2);
 
         //LANZADOR PARA LA VISTA DE TAREAS PRIORITARIAS
-    ActivityResultContract<Intent, ActivityResult> contrato3 = new ActivityResultContracts.StartActivityForResult();
-    ActivityResultCallback<ActivityResult> respuesta3 = new ActivityResultCallback<ActivityResult>(){
+        ActivityResultContract<Intent, ActivityResult> contrato3 = new ActivityResultContracts.StartActivityForResult();
+        ActivityResultCallback<ActivityResult> respuesta3 = new ActivityResultCallback<ActivityResult>(){
         @Override
         public void onActivityResult(ActivityResult o) {
-            if (o.getResultCode() == Activity.RESULT_OK) {
-                //No hay códigos de actividad
-                Intent intentDevuelto = o.getData();
-                Tarea tareaDevueltaEditada = (Tarea) intentDevuelto.getExtras().get("TareaDevueltaEditada");
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    if(tareaDevueltaEditada.isPrioritaria()){
-                        listaTareasPrio.set(posicion,tareaDevueltaEditada);
-                        listaTareas.set(posicionTareasTodas,tareaDevueltaEditada);
-                    }else{
-                        listaTareasPrio.remove(posicion);
-                        listaTareas.set(posicion,tareaDevueltaEditada);
+                if (o.getResultCode() == Activity.RESULT_OK) {
+                    //No hay códigos de actividad
+                    Intent intentDevuelto = o.getData();
+                    Tarea tareaDevueltaEditada = (Tarea) intentDevuelto.getExtras().get("TareaDevueltaEditada");
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        if(tareaDevueltaEditada.isPrioritaria()){
+                            listaTareasPrio.set(posicion,tareaDevueltaEditada);
+                            listaTareas.set(posicionTareasTodas,tareaDevueltaEditada);
+                        }else{
+                            listaTareasPrio.remove(posicion);
+                            listaTareas.set(posicionTareasTodas,tareaDevueltaEditada);
+                        }
                     }
+
+                    adapter.notifyDataSetChanged();
                 }
-
-                adapter.notifyDataSetChanged();
             }
-        }
-    };
+        };
 
-    ActivityResultLauncher<Intent> lanzador3 = registerForActivityResult(contrato3,respuesta3);
+        ActivityResultLauncher<Intent> lanzador3 = registerForActivityResult(contrato3,respuesta3);
 
 
 

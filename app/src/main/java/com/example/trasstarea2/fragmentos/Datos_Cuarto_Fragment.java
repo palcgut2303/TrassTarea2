@@ -59,7 +59,7 @@ public class Datos_Cuarto_Fragment extends Fragment {
         if (context instanceof Datos_Cuarto_Fragment.ComunicacionEditarTarea) {  //Si la Actividad implementa la interfaz de comunicación
             comunicador2 = (Datos_Cuarto_Fragment.ComunicacionEditarTarea) context; //la Actividad se convierte en comunicador
         } else {
-            throw new ClassCastException(context + " debe implementar interfaz de comunicación con el 1º fragmento");
+            throw new ClassCastException(context + " debe implementar interfaz de comunicación con el 3º fragmento");
         }
     }
 
@@ -159,7 +159,7 @@ public class Datos_Cuarto_Fragment extends Fragment {
         compartirViewModel.setDescripcion(tv_descripcion.getText().toString());
 
         requireActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.tercer_fragment, new Datos_Primer_Fragmento())
+                .replace(R.id.tercer_fragment, new Datos_Tercer_Fragmento())
                 .commit();
 
         View fragmentContainer1 = requireActivity().findViewById(R.id.tercer_fragment);
