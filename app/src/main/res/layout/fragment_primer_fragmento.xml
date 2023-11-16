@@ -18,6 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="2sp"
             android:layout_marginBottom="20sp">
 
             <TextView
@@ -31,7 +32,7 @@
             <EditText
                 android:id="@+id/tv_nombreTareaa"
                 android:layout_width="291dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:inputType="text"
                 android:textColor="#FFFFFF"
@@ -42,6 +43,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="62dp"
+            android:layout_marginLeft="2sp"
             android:layout_marginBottom="20sp"
             android:orientation="horizontal">
 
@@ -56,7 +58,7 @@
             <EditText
                 android:id="@+id/tv_fechaCreacion"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:ems="10"
@@ -69,6 +71,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="64dp"
+            android:layout_marginLeft="2sp"
             android:layout_marginBottom="20sp"
             android:orientation="horizontal">
 
@@ -83,7 +86,7 @@
             <EditText
                 android:id="@+id/tv_fechaObjetivo"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:ems="10"
@@ -95,6 +98,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="2sp"
             android:layout_marginBottom="20sp"
             android:orientation="horizontal">
 
@@ -110,13 +114,14 @@
             <Spinner
                 android:id="@+id/sp_progreso"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="2sp"
             android:orientation="horizontal">
 
             <TextView
@@ -131,7 +136,7 @@
             <CheckBox
                 android:id="@+id/checkBox"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:buttonTint="#000000" />
         </LinearLayout>

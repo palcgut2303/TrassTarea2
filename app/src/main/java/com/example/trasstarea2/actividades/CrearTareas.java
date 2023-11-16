@@ -2,7 +2,9 @@ package com.example.trasstarea2.actividades;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -41,6 +43,14 @@ public class CrearTareas extends AppCompatActivity implements Datos_Segundo_Frag
 
         getSupportFragmentManager().beginTransaction().replace(R.id.primer_fragment,fragmentoUno).addToBackStack(null).commit();
 
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        fragmentoUno = new Datos_Primer_Fragmento();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.primer_fragment,fragmentoUno).addToBackStack(null).commit();
     }
 
     @Override
