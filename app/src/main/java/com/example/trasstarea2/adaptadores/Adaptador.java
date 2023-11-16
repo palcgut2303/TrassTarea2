@@ -3,6 +3,7 @@ package com.example.trasstarea2.adaptadores;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Paint;
 import android.os.Build;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -50,6 +51,7 @@ public class Adaptador  extends RecyclerView.Adapter<Adaptador.TareaViewHolder>{
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull TareaViewHolder holder, @SuppressLint("RecyclerView") int position) {
+
         holder.posicion = position;
         tareaSeleccionada = listaTareas.get(position);
         holder.bindTarea(tareaSeleccionada);
@@ -92,6 +94,7 @@ public class Adaptador  extends RecyclerView.Adapter<Adaptador.TareaViewHolder>{
             tv_formato = itemView.findViewById(R.id.tv_formato);
             tv_dias_restantes = itemView.findViewById(R.id.tv_dias_restantes);
             barra_progreso = itemView.findViewById(R.id.barra_progreso);
+
         }
 
         //Método que nos permitirá dar valores a cada campo del objeto ViewHolder y que
@@ -99,8 +102,17 @@ public class Adaptador  extends RecyclerView.Adapter<Adaptador.TareaViewHolder>{
         @RequiresApi(api = Build.VERSION_CODES.O)
         public void bindTarea(Tarea t) {
 
-            tv_NombreTarea.setText(t.getTitulo());
+
             tv_dias_restantes.setText(String.valueOf(t.getDiasRestantes2()));
+            tv_NombreTarea.setText(t.getTitulo());
+
+            if(t.getDiasRestantes2() == 0){
+                tv_NombreTarea.setPaintFlags(tv_NombreTarea.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                tv_dias_restantes.setTextColor(itemView.getContext().getResources().getColor(android.R.color.holo_red_dark));
+            }else{
+                tv_NombreTarea.setPaintFlags(tv_NombreTarea.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+            }
+
             barra_progreso.setProgress(t.getProgreso());
             tv_formato.setText(t.getFechaObjetivo());
             foto.setImageResource(t.getFoto());
