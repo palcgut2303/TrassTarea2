@@ -423,6 +423,10 @@ public class ListadoTareasActivity extends AppCompatActivity{
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.HORIZONTAL);
 
+        TextView margin = new TextView(this);
+        margin.setText("\t\t\t");
+        layout.addView(margin);
+
         ImageView imageView = new ImageView(this);
         imageView.setImageResource(R.drawable.ic_app_trasstarea2);
         imageView.setLayoutParams(new ViewGroup.LayoutParams(250, 250));
