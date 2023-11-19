@@ -21,9 +21,10 @@
                 android:layout_width="287dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5sp"
+                android:fontFamily="@font/arimo"
                 android:text="@string/nombre_Tarea"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
 
             <EditText
                 android:id="@+id/tv_nombreTareaa"
@@ -46,9 +47,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5sp"
                 android:layout_weight="1"
+                android:fontFamily="@font/arimo"
                 android:text="@string/fecha_creacion"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
 
             <EditText
                 android:id="@+id/tv_fechaCreacion"
@@ -73,9 +75,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5sp"
                 android:layout_weight="1"
+                android:fontFamily="@font/arimo"
                 android:text="@string/fecha_objetivo"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
 
             <EditText
                 android:id="@+id/tv_fechaObjetivo"
@@ -100,9 +103,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5sp"
                 android:layout_weight="1"
+                android:fontFamily="@font/arimo"
                 android:text="@string/progreso"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
 
             <Spinner
                 android:id="@+id/sp_progreso"
@@ -122,9 +126,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5sp"
                 android:layout_weight="1"
+                android:fontFamily="@font/arimo"
                 android:text="@string/prioritaria"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
 
             <CheckBox
                 android:id="@+id/checkBox"

@@ -26,7 +26,7 @@
                 android:gravity="center"
                 android:text="@string/descripcion_frag"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp" />
+                android:textSize="22sp" />
 
             <EditText
                 android:id="@+id/tvMulti_Descripcion2"
