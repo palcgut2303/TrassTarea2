@@ -8,7 +8,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcView_Tareas"
-        android:layout_width="409dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@+id/tv_Tareas"
@@ -16,7 +16,7 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="3dp"
-        tools:listitem="@layout/item_recycler" />
+        tools:listitem="@layout/item_card_view" />
 
     <TextView
         android:id="@+id/tv_Tareas"
@@ -35,10 +35,10 @@
         android:id="@+id/tv_noTarPri"
         android:layout_width="409dp"
         android:layout_height="729dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/noTarPri"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_Tareas"
         tools:ignore="MissingConstraints" />
 
@@ -50,6 +50,7 @@
         android:text="@string/button"
         android:visibility="invisible"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="3dp" />
+        tools:layout_editor_absoluteX="3dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

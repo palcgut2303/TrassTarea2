@@ -12,15 +12,11 @@
     <string name="it_principal">Pantalla principal</string>
     <string name="desc_it_principal">Volver a la pantalla principal</string>
     <string name="it_pref_menu">Preferencias</string>
-    <string name="it_salir">Salir</string>
     <string name="desc_it_salir">Salir de la aplicación</string>
     <string name="it_acercade">Acerca de...</string>
     <string name="desc_it_acercade">Autor y versión</string>
     <string name="it_añadir_Tarea">Añadir Tarea</string>
     <string name="it_ver_prioritarias">Tareas Prioritarias</string>
-    <string name="desc_it_eliminar_menu">Borra una noticia de la BD</string>
-    <string name="it_cargar_bd_menu">Cargar ejemplos</string>
-    <string name="it_borrar_bd_menu">Resetear Base de Datos</string>
     <string name="descripcion">Descripcion</string>
     <string name="editar">Editar</string>
     <string name="borrar">Borrar</string>
@@ -29,8 +25,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ejemploTextoFragment">Hola esto es un texto ejemplo</string>
     <string name="nombre_Tarea">Nombre Tarea:</string>
-    <string name="fecha_creacion">Fecha Creacion(yyyy-mm-dd):</string>
-    <string name="fecha_objetivo">Fecha Objetivo(yyyy-mm-aa):</string>
+    <string name="fecha_creacion">Fecha Creacion:</string>
+    <string name="fecha_objetivo">Fecha Objetivo:</string>
     <string name="bt_fragment_siguiente">Siguiente</string>
     <string name="descripcion_frag">Descripcion de la Tarea</string>
     <string name="volver">Volver</string>
@@ -40,4 +36,5 @@
     <string name="cerrar">Cerrar</string>
     <string name="editar_Tarea">Editar Tarea</string>
     <string name="button">Button</string>
+    <string name="it_salir">Salir</string>
 </resources>

@@ -43,7 +43,7 @@ public class Adaptador  extends RecyclerView.Adapter<Adaptador.TareaViewHolder>{
     @NonNull
     @Override
     public TareaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_view,parent,false);
         TareaViewHolder tareaViewHolder = new TareaViewHolder(view);
         return tareaViewHolder;
     }
