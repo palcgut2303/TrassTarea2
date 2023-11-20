@@ -99,6 +99,8 @@ public class ListadoTareasActivity extends AppCompatActivity{
                     adapter = new Adaptador(this, listaTareas);
               }
 
+
+
             recyclerTareas.setAdapter(adapter);
             recyclerTareas.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
@@ -164,20 +166,34 @@ public class ListadoTareasActivity extends AppCompatActivity{
             esPriori = !esPriori;
 
             if(esPriori){
+                tv_NoTareas.setVisibility(View.INVISIBLE);
                  adapter = new Adaptador(this, listaTareasPrio);
                 recyclerTareas.setAdapter(adapter);
                 item.setIcon(R.drawable.baseline_star_border_24);
+                if(listaTareasPrio.size() == 0){
+                    tv_NoTarPri.setVisibility(View.VISIBLE);
+                }else{
+                    tv_NoTarPri.setVisibility(View.INVISIBLE);
+                }
+
             }else{
+                tv_NoTarPri.setVisibility(View.INVISIBLE);
                  adapter = new Adaptador(this, listaTareas);
                 recyclerTareas.setAdapter(adapter);
                 item.setIcon(R.drawable.baseline_star_24);
+
+                if(listaTareas.size() == 0){
+                    tv_NoTareas.setVisibility(View.VISIBLE);
+                }else{
+                    tv_NoTareas.setVisibility(View.INVISIBLE);
+                }
             }
 
 
             recyclerTareas.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
             adapter.notifyDataSetChanged();
-            Toast.makeText(this, "Mostar Prioritarias ", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Mostar Prioritarias ", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.it_añadirTarea) {
             Intent intentCrearTarea = new Intent(this, CrearTareas.class);
 

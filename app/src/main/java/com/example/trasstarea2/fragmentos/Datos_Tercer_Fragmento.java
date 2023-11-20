@@ -102,13 +102,13 @@ public class Datos_Tercer_Fragmento extends Fragment {
     }
 
     private void fechaCreacion(View view) {
-        if(view.getId()==R.id.tv_fechaCreacion){
+        if(view.getId()==R.id.tv_fechaCreacion2){
             showDatePickerDialogFechaCrea();
         }
     }
 
     private void fechaObjetivo(View view) {
-        if(view.getId()==R.id.tv_fechaObjetivo){
+        if(view.getId()==R.id.tv_fechaObjetivo2){
             showDatePickerDialogFechaObj();
         }
     }

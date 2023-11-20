@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.trasstarea2.R;
 import com.example.trasstarea2.viewModel.TareaViewModel;
@@ -145,12 +146,19 @@ public class Datos_Cuarto_Fragment extends Fragment {
 
     private void guardar(View view) {
 
+        if(compartirViewModel.getTituloTarea().getValue().length() > 0 && compartirViewModel.getFechaObjetivo().getValue().length() > 0 &&
+                compartirViewModel.getFechaCreacion().getValue().length()>0 && tv_descripcion.getText().length()>0)
+        {
+            compartirViewModel.setDescripcion(tv_descripcion.getText().toString());
+            comunicador2.onBotonGuardarTareaEditada();
 
-        compartirViewModel.setDescripcion(tv_descripcion.getText().toString());
-        comunicador2.onBotonGuardarTareaEditada();
 
+            getActivity().finish();
 
-        getActivity().finish();
+        }else{
+            Toast.makeText(getContext(), "Rellena todos los campos", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 

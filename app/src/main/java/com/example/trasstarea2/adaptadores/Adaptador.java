@@ -106,7 +106,7 @@ public class Adaptador  extends RecyclerView.Adapter<Adaptador.TareaViewHolder>{
             tv_dias_restantes.setText(String.valueOf(t.getDiasRestantes2()));
             tv_NombreTarea.setText(t.getTitulo());
 
-            if(t.getDiasRestantes2() == 0){
+            if(t.getDiasRestantes2() == 0 || t.getProgreso() == 100 || t.getDiasRestantes2() < 0){
                 tv_NombreTarea.setPaintFlags(tv_NombreTarea.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                 tv_dias_restantes.setTextColor(itemView.getContext().getResources().getColor(android.R.color.holo_red_dark));
             }else{

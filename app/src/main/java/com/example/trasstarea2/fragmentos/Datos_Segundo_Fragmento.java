@@ -23,6 +23,7 @@ import android.widget.TextView;
 import com.example.trasstarea2.R;
 import com.example.trasstarea2.viewModel.TareaViewModel;
 import android.content.Intent;
+import android.widget.Toast;
 
 public class Datos_Segundo_Fragmento extends Fragment {
 
@@ -157,12 +158,18 @@ public class Datos_Segundo_Fragmento extends Fragment {
 
     private void guardar(View view) {
 
+        if(compartirViewModel.getTituloTarea().getValue().length() > 0 && compartirViewModel.getFechaObjetivo().getValue().length() > 0 &&
+           compartirViewModel.getFechaCreacion().getValue().length()>0 && tv_descripcion.getText().length()>0)
+        {
+            compartirViewModel.setDescripcion(tv_descripcion.getText().toString());
+            comunicador2.onBotonAgregarTarea();
 
-        compartirViewModel.setDescripcion(tv_descripcion.getText().toString());
-        comunicador2.onBotonAgregarTarea();
 
+            getActivity().finish();
+        }else{
+            Toast.makeText(getContext(), "Rellena todos los campos", Toast.LENGTH_SHORT).show();
+        }
 
-        getActivity().finish();
     }
 
 

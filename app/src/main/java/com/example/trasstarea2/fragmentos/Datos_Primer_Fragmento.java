@@ -60,12 +60,10 @@ public class Datos_Primer_Fragmento extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View main = inflater.inflate(R.layout.fragment_primer_fragmento, container, false);
 
-        /*if(savedInstanceState != null){
-            tv_nombreTarea = savedInstanceState.getParcelable("titulo");
-        }*/
+
 
         tv_nombreTarea = main.findViewById(R.id.tv_nombreTareaa);
 
@@ -110,15 +108,6 @@ public class Datos_Primer_Fragmento extends Fragment {
         checkBox.setChecked(Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue()));
         return  main;
     }
-
-    /*@Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("titulo",tv_nombreTarea.getText().toString());
-
-    }*/
-
-
 
     private void fechaCreacion(View view) {
             if(view.getId()==R.id.tv_fechaCreacion){
