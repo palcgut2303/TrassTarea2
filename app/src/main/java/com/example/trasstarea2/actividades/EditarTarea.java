@@ -64,7 +64,7 @@ public class EditarTarea  extends AppCompatActivity implements Datos_Cuarto_Frag
         }
 
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.tercer_fragment,tercerFragmento).addToBackStack(null).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,tercerFragmento).addToBackStack(null).commit();
 
 
 

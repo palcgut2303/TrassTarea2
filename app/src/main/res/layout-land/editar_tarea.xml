@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/contenedor"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -31,29 +31,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_EditarTarea"
-        tools:ignore="MissingConstraints">
-
-        <fragment
-            android:id="@+id/tercer_fragment"
-            android:name="com.example.trasstarea2.fragmentos.Datos_Tercer_Fragmento"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0">
-
-
-        </fragment>
-
-        <fragment
-            android:id="@+id/cuarto_fragment"
-            android:name="com.example.trasstarea2.fragmentos.Datos_Cuarto_Fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0">
-
-
-        </fragment>
-
-
-    </LinearLayout>
+        tools:ignore="MissingConstraints"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

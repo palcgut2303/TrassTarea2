@@ -178,14 +178,14 @@ public class Datos_Segundo_Fragmento extends Fragment {
         compartirViewModel.setDescripcion(tv_descripcion.getText().toString());
 
         requireActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.primer_fragment, new Datos_Primer_Fragmento())
+                .replace(R.id.contenedor, new Datos_Primer_Fragmento())
                 .commit();
 
-        View fragmentContainer1 = requireActivity().findViewById(R.id.primer_fragment);
+        /*View fragmentContainer1 = requireActivity().findViewById(R.id.primer_fragment);
         View fragmentContainer2 = requireActivity().findViewById(R.id.segundo_fragment);
 
         fragmentContainer1.setVisibility(View.VISIBLE);
-        fragmentContainer2.setVisibility(View.GONE);
+        fragmentContainer2.setVisibility(View.GONE);*/
 
 
 

@@ -39,10 +39,21 @@ public class CrearTareas extends AppCompatActivity implements Datos_Segundo_Frag
         setContentView(R.layout.crear_tarea);
         tareaViewModel = new ViewModelProvider(this).get(TareaViewModel.class);
 
-        fragmentoUno = new Datos_Primer_Fragmento();
+        if (savedInstanceState==null)
+            fragmentoUno = new Datos_Primer_Fragmento();
+        else
+            fragmentoUno = (Datos_Primer_Fragmento) getSupportFragmentManager().getFragment(savedInstanceState, "crearplanfragment");
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.primer_fragment,fragmentoUno).addToBackStack(null).commit();
+        //fragmentoUno = new Datos_Primer_Fragmento();
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragmentoUno).addToBackStack(null).commit();
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        getSupportFragmentManager().putFragment(outState, "crearplanfragment", fragmentoUno);
     }
 
     @Override
@@ -50,7 +61,7 @@ public class CrearTareas extends AppCompatActivity implements Datos_Segundo_Frag
         super.onRestoreInstanceState(savedInstanceState);
         fragmentoUno = new Datos_Primer_Fragmento();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.primer_fragment,fragmentoUno).addToBackStack(null).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragmentoUno).addToBackStack(null).commit();
     }
 
     @Override

@@ -34,8 +34,11 @@ public class TareaViewModel extends ViewModel {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
-       this.descripcion.setValue(descripcion);
+    public void setDescripcion(String descripcioon) {
+        if(descripcion == null){
+            descripcion = new MutableLiveData<>();
+        }
+        this.descripcion.setValue(descripcioon);
     }
 
     public MutableLiveData<Integer> getId(){
@@ -48,10 +51,14 @@ public class TareaViewModel extends ViewModel {
 
 
     public void setId(int id){
+
         this.id.setValue(id);
     }
 
     public void setTituloTarea(String tituloTar) {
+        if(tituloTarea == null){
+            tituloTarea = new MutableLiveData<>();
+        }
         tituloTarea.setValue(tituloTar);
     }
 
@@ -63,6 +70,9 @@ public class TareaViewModel extends ViewModel {
     }
 
     public void setFechaCreacion(String fechaCre) {
+        if(fechaCreacion == null){
+            fechaCreacion = new MutableLiveData<>();
+        }
         fechaCreacion.setValue(fechaCre);
     }
 
@@ -74,6 +84,9 @@ public class TareaViewModel extends ViewModel {
     }
 
     public void setFechaObjetivo(String fechaObj) {
+        if(fechaObjetivo == null){
+            fechaObjetivo = new MutableLiveData<>();
+        }
         fechaObjetivo.setValue(fechaObj);
     }
 
@@ -85,6 +98,9 @@ public class TareaViewModel extends ViewModel {
     }
 
     public void setProgreso(String progre) {
+        if(progreso == null){
+            progreso = new MutableLiveData<>();
+        }
         progreso.setValue(progre);
     }
 
@@ -96,6 +112,9 @@ public class TareaViewModel extends ViewModel {
     }
 
     public void setPrioritaria(boolean priori) {
+        if(prioritaria == null){
+            prioritaria = new MutableLiveData<>();
+        }
         prioritaria.setValue(priori);
     }
 

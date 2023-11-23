@@ -157,13 +157,13 @@ public class Datos_Tercer_Fragmento extends Fragment {
         compartirViewModel.setPrioritaria(checkBox.isChecked());
         compartirViewModel.setProgreso(sp_progreso.getSelectedItem().toString());
 
-        requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.cuarto_fragment,new Datos_Cuarto_Fragment()).addToBackStack(null).commit();
+        requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,new Datos_Cuarto_Fragment()).addToBackStack(null).commit();
 
-        View fragmentContainer3 = requireActivity().findViewById(R.id.tercer_fragment);
+        /*View fragmentContainer3 = requireActivity().findViewById(R.id.contenedor);
         View fragmentContainer4 = requireActivity().findViewById(R.id.cuarto_fragment);
 
         fragmentContainer3.setVisibility(View.GONE);
-        fragmentContainer4.setVisibility(View.VISIBLE);
+        fragmentContainer4.setVisibility(View.VISIBLE);*/
 
 
     }
