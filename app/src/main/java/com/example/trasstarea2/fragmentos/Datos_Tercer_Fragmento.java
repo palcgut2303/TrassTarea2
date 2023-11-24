@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -78,27 +79,80 @@ public class Datos_Tercer_Fragmento extends Fragment {
         adaptadorProg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_progreso.setAdapter(adaptadorProg);
 
+        if(savedInstanceState != null){
+            compartirViewModel.setTituloTarea(savedInstanceState.getString("nombreTarea"));
+            compartirViewModel.setFechaCreacion(savedInstanceState.getString("fechaCreacion"));
+            compartirViewModel.setFechaObjetivo(savedInstanceState.getString("fechaObjetivo"));
+            compartirViewModel.setProgreso(savedInstanceState.getString("progreso"));
+            compartirViewModel.setPrioritaria(savedInstanceState.getBoolean("prioritaria"));
 
-        tv_nombreTarea.setText(compartirViewModel.getTituloTarea().getValue());
-        tv_fechaCreacion.setText(compartirViewModel.getFechaCreacion().getValue());
-        tv_fechaObjetivo.setText(compartirViewModel.getFechaObjetivo().getValue());
-        int index = 0;
-        if(compartirViewModel.getProgreso().getValue() != null){
-            if(compartirViewModel.getProgreso().getValue().equals("No iniciada")){
-                index = 0;
-            }else if (compartirViewModel.getProgreso().getValue().equals("Iniciada")){
-                index = 1;
-            }else if (compartirViewModel.getProgreso().getValue().equals("Avanzada")){
-                index = 2;
-            }else if(compartirViewModel.getProgreso().getValue().equals("Casi Finalizada")){
-                index = 3;
-            }else{
-                index = 4;
+            tv_nombreTarea.setText(compartirViewModel.getTituloTarea().getValue());
+            tv_fechaCreacion.setText(compartirViewModel.getFechaCreacion().getValue());
+            tv_fechaObjetivo.setText(compartirViewModel.getFechaObjetivo().getValue());
+            int index = 0;
+            if (compartirViewModel.getProgreso().getValue() != null) {
+                if (compartirViewModel.getProgreso().getValue().equals("No iniciada")) {
+                    index = 0;
+                } else if (compartirViewModel.getProgreso().getValue().equals("Iniciada")) {
+                    index = 1;
+                } else if (compartirViewModel.getProgreso().getValue().equals("Avanzada")) {
+                    index = 2;
+                } else if (compartirViewModel.getProgreso().getValue().equals("Casi Finalizada")) {
+                    index = 3;
+                } else {
+                    index = 4;
+                }
             }
+
+            sp_progreso.setSelection(index);
+            checkBox.setChecked(Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue()));
+        }else{
+            tv_nombreTarea.setText(compartirViewModel.getTituloTarea().getValue());
+            tv_fechaCreacion.setText(compartirViewModel.getFechaCreacion().getValue());
+            tv_fechaObjetivo.setText(compartirViewModel.getFechaObjetivo().getValue());
+            int index = 0;
+            if(compartirViewModel.getProgreso().getValue() != null){
+                if(compartirViewModel.getProgreso().getValue().equals("No iniciada")){
+                    index = 0;
+                }else if (compartirViewModel.getProgreso().getValue().equals("Iniciada")){
+                    index = 1;
+                }else if (compartirViewModel.getProgreso().getValue().equals("Avanzada")){
+                    index = 2;
+                }else if(compartirViewModel.getProgreso().getValue().equals("Casi Finalizada")){
+                    index = 3;
+                }else{
+                    index = 4;
+                }
+            }
+            sp_progreso.setSelection(index);
+            checkBox.setChecked(Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue()));
         }
-        sp_progreso.setSelection(index);
-        checkBox.setChecked(Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue()));
+
+
+
         return  main;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(compartirViewModel.getTituloTarea().getValue() != null || compartirViewModel.getFechaCreacion().getValue() != null || compartirViewModel.getFechaObjetivo().getValue() != null){
+
+            outState.putString("nombreTarea",tv_nombreTarea.getText().toString());
+            outState.putString("fechaCreacion",tv_fechaCreacion.getText().toString());
+            outState.putString("fechaObjetivo",tv_fechaObjetivo.getText().toString());
+            outState.putString("progreso",sp_progreso.getSelectedItem().toString());
+            outState.putBoolean("prioritaria", checkBox.isChecked());
+        }else{
+
+
+            outState.putString("nombreTarea",compartirViewModel.getTituloTarea().getValue());
+            outState.putString("fechaCreacion",compartirViewModel.getFechaCreacion().getValue());
+            outState.putString("fechaObjetivo",compartirViewModel.getFechaObjetivo().getValue());
+            outState.putString("progreso",compartirViewModel.getProgreso().getValue());
+            outState.putBoolean("prioritaria", Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue()));
+        }
+
     }
 
     private void fechaCreacion(View view) {
@@ -158,13 +212,6 @@ public class Datos_Tercer_Fragmento extends Fragment {
         compartirViewModel.setProgreso(sp_progreso.getSelectedItem().toString());
 
         requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,new Datos_Cuarto_Fragment()).addToBackStack(null).commit();
-
-        /*View fragmentContainer3 = requireActivity().findViewById(R.id.contenedor);
-        View fragmentContainer4 = requireActivity().findViewById(R.id.cuarto_fragment);
-
-        fragmentContainer3.setVisibility(View.GONE);
-        fragmentContainer4.setVisibility(View.VISIBLE);*/
-
 
     }
 

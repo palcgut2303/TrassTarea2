@@ -7,6 +7,7 @@ import android.os.PersistableBundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.trasstarea2.R;
@@ -19,8 +20,6 @@ public class CrearTareas extends AppCompatActivity implements Datos_Segundo_Frag
 
     Datos_Primer_Fragmento fragmentoUno;
 
-    //Datos_Segundo_Fragmento fragmentoDos;
-
     TareaViewModel tareaViewModel;
 
     private String nombreTarea;
@@ -28,7 +27,7 @@ public class CrearTareas extends AppCompatActivity implements Datos_Segundo_Frag
     private String fechaObjetivo;
     private boolean esPrioritaria;
     private String progresoSp;
-    //int intProgreso = numProgreso(progresoSp)
+
     private String descripcion;
 
     private int contadorId = 0;
@@ -44,17 +43,21 @@ public class CrearTareas extends AppCompatActivity implements Datos_Segundo_Frag
         else
             fragmentoUno = (Datos_Primer_Fragmento) getSupportFragmentManager().getFragment(savedInstanceState, "crearplanfragment");
 
-        //fragmentoUno = new Datos_Primer_Fragmento();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fragmentoUno).addToBackStack(null).commit();
 
     }
 
+
+
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         getSupportFragmentManager().putFragment(outState, "crearplanfragment", fragmentoUno);
+
     }
+
+
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {

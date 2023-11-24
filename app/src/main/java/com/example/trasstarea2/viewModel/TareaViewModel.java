@@ -2,6 +2,7 @@ package com.example.trasstarea2.viewModel;
 
 import android.os.Build;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
@@ -47,8 +48,6 @@ public class TareaViewModel extends ViewModel {
         }
         return id;
     }
-
-
 
     public void setId(int id){
 

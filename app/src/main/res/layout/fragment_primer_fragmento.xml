@@ -19,22 +19,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2sp"
-            android:layout_marginBottom="20sp">
+            android:layout_marginBottom="20sp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/arimo"
+                android:fontFamily="@font/anton"
                 android:text="@string/nombre_Tarea"
+                android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp" />
 
             <EditText
                 android:id="@+id/tv_nombreTareaa"
-                android:layout_width="291dp"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:ems="10"
+                android:fontFamily="@font/anton"
                 android:inputType="text"
                 android:textColor="#000000"
                 android:textSize="18sp" />
@@ -43,28 +46,30 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="62dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="2sp"
             android:layout_marginBottom="20sp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/arimo"
+                android:fontFamily="@font/anton"
                 android:text="@string/fecha_creacion"
+                android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp" />
 
             <EditText
                 android:id="@+id/tv_fechaCreacion"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:ems="10"
                 android:focusable="false"
+                android:fontFamily="@font/anton"
                 android:inputType="text"
                 android:textColor="#000000"
                 android:textSize="18sp" />
@@ -72,28 +77,30 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="2sp"
             android:layout_marginBottom="20sp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:fontFamily="@font/arimo"
+                android:fontFamily="@font/anton"
                 android:text="@string/fecha_objetivo"
+                android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp" />
 
             <EditText
                 android:id="@+id/tv_fechaObjetivo"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:ems="10"
                 android:focusable="false"
+                android:fontFamily="@font/anton"
                 android:inputType="text"
                 android:textColor="#000000" />
         </LinearLayout>
@@ -103,15 +110,16 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="2sp"
             android:layout_marginBottom="20sp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_Progreso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/arimo"
+                android:fontFamily="@font/anton"
                 android:text="@string/progreso"
+                android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp" />
 
@@ -125,15 +133,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2sp"
-            android:orientation="horizontal">
+            android:layout_marginLeft="2sp">
 
             <TextView
                 android:id="@+id/cb_Prioritaria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/arimo"
+                android:fontFamily="@font/anton"
                 android:text="@string/prioritaria"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp" />

@@ -193,7 +193,7 @@ public class ListadoTareasActivity extends AppCompatActivity{
             recyclerTareas.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
             adapter.notifyDataSetChanged();
-            //Toast.makeText(this, "Mostar Prioritarias ", Toast.LENGTH_SHORT).show();
+
         } else if (id == R.id.it_añadirTarea) {
             Intent intentCrearTarea = new Intent(this, CrearTareas.class);
 

@@ -24,7 +24,7 @@ public class EditarTarea  extends AppCompatActivity implements Datos_Cuarto_Frag
     private String fechaObjetivo;
     private boolean esPrioritaria;
     private String progresoSp;
-    //int intProgreso = numProgreso(progresoSp)
+
     private String descripcion;
 
     @Override

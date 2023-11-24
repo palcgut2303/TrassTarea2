@@ -41,18 +41,14 @@ public class Datos_Primer_Fragmento extends Fragment {
 
     private String nombreTarea;
 
-
-
     public Datos_Primer_Fragmento() {
         // Required empty public constructor
     }
 
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         initProgresoSpinner();
 
         compartirViewModel = new ViewModelProvider(requireActivity()).get(TareaViewModel.class);
@@ -65,6 +61,7 @@ public class Datos_Primer_Fragmento extends Fragment {
 
         View main = inflater.inflate(R.layout.fragment_primer_fragmento, container, false);
 
+
         tv_nombreTarea = main.findViewById(R.id.tv_nombreTareaa);
         tv_fechaCreacion = main.findViewById(R.id.tv_fechaCreacion);
         tv_fechaCreacion.setOnClickListener(this::fechaCreacion);
@@ -75,36 +72,16 @@ public class Datos_Primer_Fragmento extends Fragment {
         checkBox = main.findViewById(R.id.checkBox);
         main.findViewById(R.id.bt_cerrar).setOnClickListener(v -> getActivity().finish());
         bt_siguiente.setOnClickListener(this::siguiente);
-
-
         ArrayAdapter<String> adaptadorProg = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item,progreso);
         adaptadorProg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_progreso.setAdapter(adaptadorProg);
 
-
-            /*tv_nombreTarea.setText(savedInstanceState.getString("nombreTarea"));
-            tv_fechaCreacion.setText(savedInstanceState.getString("fechaCreacion"));
-            tv_fechaObjetivo.setText(savedInstanceState.getString("fechaObjetivo"));
-            String progreso = savedInstanceState.getString("progreso");
-            int index = 0;
-            switch (progreso){
-                case "No iniciada":
-                    index = 0;
-                    break;
-                case "Iniciada":
-                    index = 1;
-                    break;
-                case "Avanzada":
-                    index = 2;
-                    break;
-                case "Casi Finalizada":
-                    index = 3;
-                    break;
-                case "Finalizada:":
-                    index = 4;
-                    break;
-            }
-            checkBox.setChecked(savedInstanceState.getBoolean("prioritaria"));*/
+        if(savedInstanceState !=null){
+            compartirViewModel.setTituloTarea(savedInstanceState.getString("nombreTarea"));
+            compartirViewModel.setFechaCreacion(savedInstanceState.getString("fechaCreacion"));
+            compartirViewModel.setFechaObjetivo(savedInstanceState.getString("fechaObjetivo"));
+            compartirViewModel.setProgreso(savedInstanceState.getString("progreso"));
+            compartirViewModel.setPrioritaria(savedInstanceState.getBoolean("prioritaria"));
 
             tv_nombreTarea.setText(compartirViewModel.getTituloTarea().getValue());
             tv_fechaCreacion.setText(compartirViewModel.getFechaCreacion().getValue());
@@ -127,38 +104,29 @@ public class Datos_Primer_Fragmento extends Fragment {
             sp_progreso.setSelection(index);
             checkBox.setChecked(Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue()));
 
-           if(savedInstanceState != null){
-                String nombreTarea = savedInstanceState.getString("nombreTarea");
-                String fechaCreacion = savedInstanceState.getString("fechaCreacion");
-                String fechaObjetivo = savedInstanceState.getString("fechaObjetivo");
-                String progreso2 = savedInstanceState.getString("progreso");
-                boolean prioritaria = savedInstanceState.getBoolean("prioritaria");
+        }else{
 
-                tv_nombreTarea.setText(nombreTarea);
-                tv_fechaCreacion.setText(fechaCreacion);
-                tv_fechaObjetivo.setText(fechaObjetivo);
-                index = 0;
-                switch (progreso2){
-                    case "No iniciada":
-                        index = 0;
-                        break;
-                    case "Iniciada":
-                        index = 1;
-                        break;
-                    case "Avanzada":
-                        index = 2;
-                        break;
-                    case "Casi Finalizada":
-                        index = 3;
-                        break;
-                    case "Finalizada:":
-                        index = 4;
-                        break;
+            tv_nombreTarea.setText(compartirViewModel.getTituloTarea().getValue());
+            tv_fechaCreacion.setText(compartirViewModel.getFechaCreacion().getValue());
+            tv_fechaObjetivo.setText(compartirViewModel.getFechaObjetivo().getValue());
+            int index = 0;
+            if (compartirViewModel.getProgreso().getValue() != null) {
+                if (compartirViewModel.getProgreso().getValue().equals("No iniciada")) {
+                    index = 0;
+                } else if (compartirViewModel.getProgreso().getValue().equals("Iniciada")) {
+                    index = 1;
+                } else if (compartirViewModel.getProgreso().getValue().equals("Avanzada")) {
+                    index = 2;
+                } else if (compartirViewModel.getProgreso().getValue().equals("Casi Finalizada")) {
+                    index = 3;
+                } else {
+                    index = 4;
                 }
-                sp_progreso.setSelection(index);
-                checkBox.setChecked(prioritaria);
             }
 
+            sp_progreso.setSelection(index);
+            checkBox.setChecked(Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue()));
+        }
 
         return  main;
     }
@@ -166,53 +134,25 @@ public class Datos_Primer_Fragmento extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
+        if(compartirViewModel.getTituloTarea().getValue() != null || compartirViewModel.getFechaCreacion().getValue() != null || compartirViewModel.getFechaObjetivo().getValue() != null){
 
-        compartirViewModel.setTituloTarea(tv_nombreTarea.getText().toString());
-        compartirViewModel.setFechaCreacion(tv_fechaCreacion.getText().toString());
-        compartirViewModel.setFechaObjetivo(tv_fechaObjetivo.getText().toString());
-        compartirViewModel.setProgreso(sp_progreso.getSelectedItem().toString());
-        compartirViewModel.setPrioritaria(checkBox.isChecked());
-
-        outState.putString("nombreTarea",tv_nombreTarea.getText().toString());
-        outState.putString("fechaCreacion",tv_fechaCreacion.getText().toString());
-        outState.putString("fechaObjetivo",tv_fechaObjetivo.getText().toString());
-        outState.putString("progreso",sp_progreso.getSelectedItem().toString());
-        outState.putBoolean("prioritaria", checkBox.isChecked());
+            outState.putString("nombreTarea",compartirViewModel.getTituloTarea().getValue());
+            outState.putString("fechaCreacion",compartirViewModel.getFechaCreacion().getValue());
+            outState.putString("fechaObjetivo",compartirViewModel.getFechaObjetivo().getValue());
+            outState.putString("progreso",compartirViewModel.getProgreso().getValue());
+            outState.putBoolean("prioritaria", Boolean.TRUE.equals(compartirViewModel.getPrioritaria().getValue()));
+        }else{
+            outState.putString("nombreTarea",tv_nombreTarea.getText().toString());
+            outState.putString("fechaCreacion",tv_fechaCreacion.getText().toString());
+            outState.putString("fechaObjetivo",tv_fechaObjetivo.getText().toString());
+            outState.putString("progreso",sp_progreso.getSelectedItem().toString());
+            outState.putBoolean("prioritaria", checkBox.isChecked());
+        }
 
 
     }
 
-   /* @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-        if(savedInstanceState != null){
-            tv_nombreTarea.setText(savedInstanceState.getString("nombreTarea"));
-            tv_fechaCreacion.setText(savedInstanceState.getString("fechaCreacion"));
-            tv_fechaObjetivo.setText(savedInstanceState.getString("fechaObjetivo"));
-            String progreso = savedInstanceState.getString("progreso");
-            int index = 0;
-            switch (progreso){
-                case "No iniciada":
-                    index = 0;
-                    break;
-                case "Iniciada":
-                    index = 1;
-                    break;
-                case "Avanzada":
-                    index = 2;
-                    break;
-                case "Casi Finalizada":
-                    index = 3;
-                    break;
-                case "Finalizada:":
-                    index = 4;
-                    break;
-            }
-            checkBox.setChecked(savedInstanceState.getBoolean("prioritaria"));
-        }
 
-
-    }*/
 
     private void fechaCreacion(View view) {
             if(view.getId()==R.id.tv_fechaCreacion){
@@ -278,18 +218,5 @@ public class Datos_Primer_Fragmento extends Fragment {
                 .addToBackStack(null)
                 .commit();
 
-        /*View fragmentContainer1 = requireActivity().findViewById(R.id.primer_fragment);
-        View fragmentContainer2 = requireActivity().findViewById(R.id.segundo_fragment);
-
-        fragmentContainer1.setVisibility(View.GONE);
-        fragmentContainer2.setVisibility(View.VISIBLE);*/
-
-
-
-
-
-
     }
-
-
 }

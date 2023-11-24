@@ -23,10 +23,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/anton"
                 android:gravity="center"
                 android:text="@string/descripcion_frag"
                 android:textColor="#FFFBFB"
-                android:textSize="22sp" />
+                android:textSize="25sp" />
 
             <EditText
                 android:id="@+id/tvMulti_Descripcion2"
@@ -34,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:fontFamily="@font/anton"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:textColor="#000000" />

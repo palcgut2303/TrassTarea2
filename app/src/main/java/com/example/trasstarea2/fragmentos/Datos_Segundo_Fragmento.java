@@ -79,6 +79,7 @@ public class Datos_Segundo_Fragmento extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         compartirViewModel = new ViewModelProvider(requireActivity()).get(TareaViewModel.class);
 
         observadorTitulo = new Observer<String>() {
@@ -146,13 +147,14 @@ public class Datos_Segundo_Fragmento extends Fragment {
        bt_guardar = main.findViewById(R.id.bt_Guardar);
        bt_guardar.setOnClickListener(this::guardar);
        tv_descripcion = main.findViewById(R.id.tvMulti_Descripcion);
-
-        tv_descripcion.setText(compartirViewModel.getDescripcion().getValue());
+       tv_descripcion.setText(compartirViewModel.getDescripcion().getValue());
 
 
 
        return main;
     }
+
+
 
 
 
@@ -180,14 +182,6 @@ public class Datos_Segundo_Fragmento extends Fragment {
         requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.contenedor, new Datos_Primer_Fragmento())
                 .commit();
-
-        /*View fragmentContainer1 = requireActivity().findViewById(R.id.primer_fragment);
-        View fragmentContainer2 = requireActivity().findViewById(R.id.segundo_fragment);
-
-        fragmentContainer1.setVisibility(View.VISIBLE);
-        fragmentContainer2.setVisibility(View.GONE);*/
-
-
 
 
     }

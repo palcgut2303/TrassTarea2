@@ -24,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/anton"
                 android:gravity="center"
                 android:text="@string/descripcion_frag"
                 android:textColor="#FFFFFF"
@@ -35,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:fontFamily="@font/anton"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:textColor="#000000" />

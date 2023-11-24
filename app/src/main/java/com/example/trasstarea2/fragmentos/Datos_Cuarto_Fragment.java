@@ -170,14 +170,6 @@ public class Datos_Cuarto_Fragment extends Fragment {
                 .replace(R.id.contenedor, new Datos_Tercer_Fragmento())
                 .commit();
 
-       /* View fragmentContainer1 = requireActivity().findViewById(R.id.tercer_fragment);
-        View fragmentContainer2 = requireActivity().findViewById(R.id.cuarto_fragment);
-
-        fragmentContainer1.setVisibility(View.VISIBLE);
-        fragmentContainer2.setVisibility(View.GONE);*/
-
-
-
 
     }
 
