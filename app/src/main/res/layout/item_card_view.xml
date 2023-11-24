@@ -39,6 +39,7 @@
                         android:id="@+id/tv_NombreTarea"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/anton"
                         android:text="@string/nombreTarea"
                         android:textColor="#FFFFFF"
                         android:textColorHint="#F4F4F4" />
@@ -55,14 +56,16 @@
                         android:id="@+id/barra_progreso"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="78dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5sp" />
 
                     <TextView
                         android:id="@+id/tv_formato"
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/anton"
                         android:text="@string/formato_fecha"
                         android:textAlignment="viewStart"
                         android:textColor="#FFFFFF"
@@ -83,6 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
+                    android:fontFamily="@font/anton"
                     android:gravity="bottom"
                     android:text="@string/quedan"
                     android:textAlignment="viewEnd"
@@ -96,6 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
+                    android:fontFamily="@font/anton"
                     android:gravity="bottom"
                     android:text="@string/numDias"
                     android:textAlignment="center"
@@ -109,6 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
+                    android:fontFamily="@font/anton"
                     android:gravity="bottom"
                     android:text="@string/dias"
                     android:textAlignment="textStart"
